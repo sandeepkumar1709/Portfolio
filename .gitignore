@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+
+# Build
+dist
+dist-ssr
+*.local
+
+# Local / private context (do not commit)
+.cursorrules
+linkedin_update.txt
+profile_context.md
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+*.log
+.cursor/
+
+# Optional
+*.tsbuildinfo
