@@ -27,7 +27,7 @@ npm run preview   # preview production build
 
 ## Resume
 
-The "Download Resume" button points to `/resume.pdf`. Add your PDF to `public/resume.pdf` to enable it; until then the link is present but the file will 404.
+The "Download Resume" button points to `/resume.pdf`. 
 
 ## Tech
 
