@@ -8,8 +8,8 @@ interface CertificationsProps {
 }
 
 export function Certifications({ variant = "linen" }: CertificationsProps) {
-  if (!certifications.length) return null
   const reducedMotion = useReducedMotion()
+  if (!certifications.length) return null
 
   const styleByIssuer: Record<string, { bg: string }> = {
     Neo4j: { bg: "bg-gradient-to-br from-emerald-100/70 via-white/40 to-transparent" },
