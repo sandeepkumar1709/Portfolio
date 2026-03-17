@@ -9,7 +9,7 @@ interface SectionProps {
 }
 
 export function Section({ id, title, children, className = "", variant = "linen" }: SectionProps) {
-  const backgroundClass = variant === "sand" ? "bg-[#FAF9F2]" : "bg-[#FDFCF0]"
+  const backgroundClass = variant === "sand" ? "bg-sand" : "bg-linen"
 
   return (
     <section

@@ -43,7 +43,7 @@ export function Navbar() {
   )
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-black/5">
+    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-black/5 bg-linen/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
         <a
           href="/"
@@ -57,7 +57,7 @@ export function Navbar() {
             }
             setMobileOpen(false)
           }}
-          className="text-sm font-semibold tracking-tight text-[#2D3027] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D3027] focus-visible:ring-offset-2 rounded-full"
+          className="text-sm font-semibold tracking-tight text-graphite focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded-full"
         >
           SP
         </a>
@@ -80,10 +80,10 @@ export function Navbar() {
                 <a
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D3027] focus-visible:ring-offset-2 ${
+                  className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen ${
                     pathname === "/" && hash === href
-                      ? "text-[#2D3027]"
-                      : "text-[#2D3027]/70 hover:text-[#2D3027]"
+                      ? "text-graphite"
+                      : "text-graphite/70 hover:text-graphite"
                   }`.trim()}
                 >
                   {label}
@@ -94,7 +94,7 @@ export function Navbar() {
 
           <a
             href={site.resumeUrl}
-            className="hidden md:inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#2D3027] text-white text-sm font-medium hover:bg-[#1F211B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D3027] focus-visible:ring-offset-2"
+            className="hidden md:inline-flex items-center justify-center px-5 py-2 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
           >
             Resume
           </a>
@@ -106,7 +106,7 @@ export function Navbar() {
               aria-controls="mobile-menu"
               id="menu-button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 focus-visible:ring-offset-2 text-neutral-700"
+              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen text-graphite"
             >
               <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
               <svg
@@ -131,7 +131,7 @@ export function Navbar() {
         id="mobile-menu"
         role="dialog"
         aria-label="Mobile menu"
-        className={`md:hidden border-t border-neutral-200 ${mobileOpen ? "block" : "hidden"}`}
+        className={`md:hidden border-t border-black/5 bg-linen/95 ${mobileOpen ? "block" : "hidden"}`}
       >
         <ul className="px-4 py-3 space-y-1">
           {NAV_LINKS.map(({ label, href }) => (
@@ -139,10 +139,10 @@ export function Navbar() {
               <a
                 href={href}
                 onClick={(e) => handleNavClick(e, href)}
-                className={`min-h-[44px] flex items-center px-3 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 focus-visible:ring-inset ${
+                className={`min-h-[44px] flex items-center px-3 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-inset ${
                   pathname === "/" && hash === href
-                    ? "text-neutral-900 font-medium bg-neutral-50"
-                    : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50"
+                    ? "text-graphite font-medium bg-black/5"
+                    : "text-graphite/80 hover:text-graphite hover:bg-black/5"
                 }`.trim()}
               >
                 {label}

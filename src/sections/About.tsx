@@ -42,7 +42,7 @@ export function About({ variant = "linen" }: AboutProps) {
     <Section id="about" variant={variant}>
       <div className="w-full">
         <motion.p
-          className="text-[#2D3027]/70 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+          className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
           initial={reducedMotion ? false : { opacity: 0, y: 10 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
@@ -51,7 +51,7 @@ export function About({ variant = "linen" }: AboutProps) {
           About me
         </motion.p>
         <motion.h2
-          className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-[#2D3027] mb-8 text-center md:text-left"
+          className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-8 text-center md:text-left"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
@@ -60,7 +60,7 @@ export function About({ variant = "linen" }: AboutProps) {
           Passionate about technology and innovation
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">
           <div className="space-y-6">
             {aboutCopy.split("\n\n").map((para) => (
               <motion.p
@@ -76,36 +76,54 @@ export function About({ variant = "linen" }: AboutProps) {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-5">
             {highlights.map((card, idx) => (
               <motion.div
                 key={card.title}
-                className="group rounded-2xl bg-white/50 border border-black/5 shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6 transition-transform transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                className={[
+                  "group relative overflow-hidden rounded-2xl border border-black/5",
+                  "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6 md:p-7",
+                  "transition-transform transition-shadow duration-200",
+                  "hover:-translate-y-0.5 hover:shadow-md",
+                  "focus-within:-translate-y-0.5 focus-within:shadow-md",
+                  idx === 0
+                    ? "bg-gradient-to-br from-amber-100/60 via-white/40 to-transparent"
+                    : idx === 1
+                      ? "bg-gradient-to-br from-emerald-100/60 via-white/40 to-transparent"
+                      : "bg-gradient-to-br from-indigo-100/60 via-white/40 to-transparent",
+                ].join(" ")}
                 initial={reducedMotion ? false : { opacity: 0, y: 14 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
                 transition={{ duration: 0.55, ease: "easeOut", delay: reducedMotion ? 0 : idx * 0.06 }}
               >
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rotate-12 border border-black/5 bg-white/20"
+                />
                 <div className="flex items-start gap-3">
                   <span
                     aria-hidden
-                    className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#2D3027]/5 text-[#2D3027] ring-1 ring-black/5"
+                    className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/60 ring-1 ring-black/5 text-graphite"
                   >
                     <svg
                       className="h-4 w-4"
                       viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                      fill="currentColor"
                     >
-                      <path d="M12 2v20" />
-                      <path d="M2 12h20" />
+                      <rect
+                        x="7"
+                        y="7"
+                        width="10"
+                        height="10"
+                        rx="2"
+                        transform="rotate(45 12 12)"
+                        opacity="0.9"
+                      />
                     </svg>
                   </span>
                   <div>
-                    <p className="text-sm font-semibold tracking-tight text-[#2D3027]">
+                    <p className="text-sm font-semibold tracking-tight text-graphite">
                       {card.title}
                     </p>
                     <p className="mt-1 text-sm leading-relaxed text-slate-700">

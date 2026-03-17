@@ -32,7 +32,7 @@ export function Projects({ variant = "linen" }: ProjectsProps) {
               </div>
               <Link
                 to={`/projects/${project.slug}`}
-                className="text-sm font-medium text-[#2D3027] hover:text-[#151713] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D3027] focus-visible:ring-offset-2 rounded underline underline-offset-2"
+                className="text-sm font-medium text-graphite hover:text-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded underline underline-offset-2"
               >
                 View project
               </Link>

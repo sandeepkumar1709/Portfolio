@@ -18,14 +18,26 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Backend",
-    items: ["Spring Boot", "FastAPI", "Flask", "GraphQL", "gRPC"],
+    items: ["Spring Boot", "FastAPI", "Flask", "Django", "GraphQL", "gRPC"],
   },
   {
     category: "DevOps",
-    items: ["AWS (Lambda, SageMaker, EC2)", "Docker", "Kubernetes", "NGINX", "GitHub Actions", "Vercel", "CI/CD"],
+    items: [
+      "AWS (Lambda, SageMaker, EC2)",
+      "Docker",
+      "Kubernetes",
+      "NGINX",
+      "GitHub Actions",
+      "Vercel",
+      "CI/CD",
+    ],
+  },
+  {
+    category: "Tools",
+    items: ["Claude Code", "Cursor", "n8n"],
   },
   {
     category: "Databases",
-    items: ["PostgreSQL", "MongoDB", "Neo4j", "Redis"],
+    items: ["PostgreSQL", "MongoDB", "Neo4j", "Redis", "Firebase", "Supabase"],
   },
 ]

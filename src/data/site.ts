@@ -1,5 +1,5 @@
 export const site = {
-  name: "Sandeep Poloju-",
+  name: "Sandeep Poloju",
   role: "Backend-focused full-stack engineer + AI infrastructure",
   proofPoints: [
     "Knowledge Graph platform at Infosys — Neo4j, GNN, multi-tenant SaaS",
