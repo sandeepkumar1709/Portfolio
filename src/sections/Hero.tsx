@@ -4,8 +4,8 @@ import { Mail, Linkedin, Github } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pb-32">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="relative min-h-screen flex items-center pb-32 px-6 md:px-24">
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="flex justify-center md:justify-start">
           <figure className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
             <img
@@ -17,14 +17,17 @@ export function Hero() {
           </figure>
         </div>
 
-        <div className="text-center md:text-left">
-          <h1 className="text-5xl md:text-7xl font-bold font-[&quot;Playfair Display&quot;,_serif] text-[#2D3027] mb-4">
+        <div className="text-center md:text-left w-full max-w-none">
+          <p className="text-[#2D3027] font-sans text-sm font-medium mb-2">
+            Hello, I&apos;m
+          </p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight font-[&quot;Playfair Display&quot;,_serif] text-[#2D3027] whitespace-nowrap">
             {site.name}
           </h1>
-          <p className="text-xl md:text-2xl font-sans tracking-tight text-[#2D3027] mb-4">
+          <p className="text-[clamp(1rem,2.4vw,1.5rem)] font-sans tracking-tight text-[#2D3027]/80 font-semibold mt-2 whitespace-nowrap">
             Backend-focused Full-stack Engineer &amp; AI Infrastructure Architect
           </p>
-          <p className="text-lg leading-relaxed max-w-2xl text-slate-600 mx-auto md:mx-0 mb-8">
+          <p className="text-lg leading-relaxed max-w-3xl text-slate-700 mx-auto md:mx-0 mt-4 mb-8">
             UMD Software Engineering Graduate (3.93 GPA) with 3+ years of professional experience
             building scalable platforms for Fortune 500 clients. I specialize in end-to-end product
             ownership, bridging the gap between robust backend infrastructure and Agentic AI through
