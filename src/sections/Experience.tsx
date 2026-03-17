@@ -1,9 +1,13 @@
 import { Section } from "../components/Section"
 import { experience } from "../data/experience"
 
-export function Experience() {
+interface ExperienceProps {
+  variant?: "linen" | "sand"
+}
+
+export function Experience({ variant = "linen" }: ExperienceProps) {
   return (
-    <Section id="experience" title="Experience">
+    <Section id="experience" title="Experience" variant={variant}>
       <div className="relative">
         <div
           className="absolute left-[7px] top-2 bottom-2 w-px bg-neutral-200"

@@ -1,9 +1,13 @@
 import { Section } from "../components/Section"
 import { skills } from "../data/skills"
 
-export function Skills() {
+interface SkillsProps {
+  variant?: "linen" | "sand"
+}
+
+export function Skills({ variant = "linen" }: SkillsProps) {
   return (
-    <Section id="skills" title="Skills">
+    <Section id="skills" title="Skills" variant={variant}>
       <div className="space-y-8">
         {skills.map(({ category, items }) => (
           <div key={category}>

@@ -8,6 +8,7 @@ import { Experience } from "../sections/Experience"
 import { Education } from "../sections/Education"
 import { Projects } from "../sections/Projects"
 import { Contact } from "../sections/Contact"
+import { Certifications } from "../sections/Certifications"
 
 export default function Home() {
   const { hash } = useLocation()
@@ -26,12 +27,13 @@ export default function Home() {
   return (
     <main id="main">
       <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Education />
-      <Projects />
-      <Contact />
+      <About variant="sand" />
+      <Skills variant="linen" />
+      <Certifications variant="sand" />
+      <Experience variant="linen" />
+      <Education variant="sand" />
+      <Projects variant="linen" />
+      <Contact variant="sand" />
     </main>
   )
 }

@@ -1,9 +1,13 @@
 import { Section } from "../components/Section"
 import { education } from "../data/education"
 
-export function Education() {
+interface EducationProps {
+  variant?: "linen" | "sand"
+}
+
+export function Education({ variant = "linen" }: EducationProps) {
   return (
-    <Section id="education" title="Education">
+    <Section id="education" title="Education" variant={variant}>
       <ul className="space-y-8 list-none">
         {education.map((entry) => (
           <li key={`${entry.school}-${entry.period}`}>

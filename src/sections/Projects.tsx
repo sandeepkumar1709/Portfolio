@@ -3,9 +3,13 @@ import { Section } from "../components/Section"
 import { Card } from "../components/Card"
 import { projects } from "../data/projects"
 
-export function Projects() {
+interface ProjectsProps {
+  variant?: "linen" | "sand"
+}
+
+export function Projects({ variant = "linen" }: ProjectsProps) {
   return (
-    <Section id="projects" title="Projects">
+    <Section id="projects" title="Projects" variant={variant}>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
         {projects.map((project) => (
           <li key={project.slug}>
@@ -28,7 +32,7 @@ export function Projects() {
               </div>
               <Link
                 to={`/projects/${project.slug}`}
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 focus-visible:ring-offset-2 rounded underline underline-offset-2"
+                className="text-sm font-medium text-[#2D3027] hover:text-[#151713] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D3027] focus-visible:ring-offset-2 rounded underline underline-offset-2"
               >
                 View project
               </Link>

@@ -16,10 +16,10 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-md font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-700"
+    "inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-8 py-3 rounded-full font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
   const variants = {
     primary:
-      "bg-neutral-700 text-white hover:bg-neutral-800 focus-visible:ring-neutral-700",
+      "bg-[#2D3027] text-white hover:bg-[#1F211B] focus-visible:ring-[#2D3027]",
     secondary:
       "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 focus-visible:ring-neutral-400 border border-neutral-300",
   }
@@ -27,14 +27,24 @@ export function Button({
 
   if (as === "a" && href !== undefined) {
     return (
-      <a href={href} className={combined} {...(props as unknown as Record<string, unknown>)}>
+      <a
+        href={href}
+        className={combined}
+        style={{ backgroundColor: "#2D3027" }}
+        {...(props as unknown as Record<string, unknown>)}
+      >
         {children}
       </a>
     )
   }
 
   return (
-    <button type="button" className={combined} {...props}>
+    <button
+      type="button"
+      className={combined}
+      style={{ backgroundColor: "#2D3027" }}
+      {...props}
+    >
       {children}
     </button>
   )

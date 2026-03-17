@@ -8,9 +8,13 @@ My strengths lie in backend systems, graph data (Neo4j, Cypher), RAG and LLM int
 I'm interested in scalable systems, AI infrastructure, and the intersection of research and production engineering.
 `.trim()
 
-export function About() {
+interface AboutProps {
+  variant?: "linen" | "sand"
+}
+
+export function About({ variant = "linen" }: AboutProps) {
   return (
-    <Section id="about" title="About">
+    <Section id="about" title="About" variant={variant}>
       <div className="prose prose-neutral max-w-none">
         <p className="text-neutral-700 leading-relaxed whitespace-pre-line">
           {aboutCopy}

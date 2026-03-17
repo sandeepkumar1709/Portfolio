@@ -4,9 +4,13 @@ import { site } from "../data/site"
 const linkClass =
   "inline-flex items-center min-h-[44px] text-neutral-700 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 focus-visible:ring-offset-2 rounded underline underline-offset-2"
 
-export function Contact() {
+interface ContactProps {
+  variant?: "linen" | "sand"
+}
+
+export function Contact({ variant = "linen" }: ContactProps) {
   return (
-    <Section id="contact" title="Contact">
+    <Section id="contact" title="Contact" variant={variant}>
       <ul className="space-y-4 list-none">
         <li>
           <a href={`mailto:${site.contact.email}`} className={linkClass}>

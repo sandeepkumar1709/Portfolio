@@ -8,7 +8,7 @@ interface CardProps {
 export function Card({ children, className = "" }: CardProps) {
   return (
     <article
-      className={`rounded-lg border border-neutral-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md focus-within:shadow-md ${className}`.trim()}
+      className={`rounded-xl border border-neutral-200 p-5 shadow-sm transition-colors transition-transform transition-shadow duration-150 hover:shadow-md hover:-translate-y-0.5 focus-within:shadow-md focus-within:-translate-y-0.5 ${className}`.trim()}
     >
       {children}
     </article>
