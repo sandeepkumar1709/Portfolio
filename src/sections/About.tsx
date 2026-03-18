@@ -9,6 +9,8 @@ That experience shaped how I write software. The best code is not just clever; i
 At the University of Maryland (M.Eng in Software Engineering, GPA 3.93), I worked as a Research Assistant on an AgriTech ML pipeline that processed 10GB+ of heterogeneous data and improved disease prediction accuracy from 74% to 91% using AWS (S3, SageMaker, Lambda/API Gateway). Mentorship is a real part of how I work. As a Graduate Teaching Assistant for Object-Oriented Programming and as a mentor across multiple semesters, I have helped 500+ students build strong fundamentals through structured problem solving, design principles, and thoughtful feedback.
 
 Today I focus on AI infrastructure and backend systems, especially retrieval pipelines and stateful orchestration with LangGraph. I also built a RAG system designed to handle 10,000+ PDFs and large document libraries while keeping retrieval reliable and latency predictable.
+
+Outside of the terminal, I live by a simple rule: stay active and stay curious. I lift and maintain a consistent routine. I also enjoy cooking for people. It is a simple way for me to step away from the screen and spend some quality time with the people around me
 `.trim()
 
 type HighlightCard = {

@@ -30,9 +30,10 @@ export const experience: ExperienceEntry[] = [
       "Designed GNN microservice for link prediction across multi-hop entity traversals in insurance/financial datasets.",
       "Integrated LLMs into search layer; boosted NLU query accuracy from 85% to 92%.",
       "Led team of three to automate regression testing.",
+      "Attained a 15% increase in Monthly Active Users (MAU) as measured by session tracking for assistive technology users, by engineering and launching a full-scale UI remediation that enhanced  overall product accessibility.",
     ],
     stack:
-      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, Cypher, GraphQL, Spring Boot, PyTorch, LLMs, NGINX, Docker, Kubernetes, Rancher",
+      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, Cypher, GraphQL, Spring Boot, PyTorch, LLMs, NGINX, Docker, Kubernetes, Rancher, WACAG2.1 Compliance"
   },
   {
     role: "Software Developer & Instructor",

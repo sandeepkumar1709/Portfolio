@@ -6,16 +6,17 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pb-32 px-6 md:px-24">
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="flex justify-center md:justify-start">
-          <figure className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-            <img
-              src="/images/profile.jpg"
-              alt="Portrait of Sandeep Poloju"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </figure>
-        </div>
+      <div className="flex justify-center md:justify-start">
+      <figure className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl bg-slate-100">
+        <img
+          src="/images/profile.jpg"
+          alt="Sandeep Poloju"
+          className="w-full h-full object-cover transform-gpu backface-hidden antialiased"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
 
         <div className="text-center md:text-left w-full max-w-none">
           <p className="text-graphite font-sans text-sm font-medium mb-2">

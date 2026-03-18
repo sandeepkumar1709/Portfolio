@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { site } from "../data/site"
+import { LiveClock } from "./LiveClock"
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -92,12 +93,15 @@ export function Navbar() {
             ))}
           </ul>
 
-          <a
-            href={site.resumeUrl}
-            className="hidden md:inline-flex items-center justify-center px-5 py-2 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
-          >
-            Resume
-          </a>
+          <div className="hidden md:flex items-center gap-4">
+            <LiveClock />
+            <a
+              href={site.resumeUrl}
+              className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
+            >
+              Resume
+            </a>
+          </div>
 
           <div className="md:hidden flex items-center gap-2">
             <button
