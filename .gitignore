@@ -10,7 +10,8 @@ dist-ssr
 .cursorrules
 linkedin_update.txt
 profile_context.md
-
+TODO.md
+cover_letter.docx
 # Env and secrets
 .env
 .env.*
