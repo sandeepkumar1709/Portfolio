@@ -1,5 +1,6 @@
 import { Section } from "../components/Section"
 import { education } from "../data/education"
+import { achievements } from "../data/certifications"
 import { Building2, ChevronDown } from "lucide-react"
 
 interface EducationProps {
@@ -83,6 +84,32 @@ export function Education({ variant = "linen" }: EducationProps) {
           })}
         </ul>
       </div>
+
+      {achievements.length > 0 ? (
+        <div className="mt-10 rounded-2xl border border-black/5 bg-white/60 p-6 md:p-7">
+          <h3 className="text-sm font-semibold tracking-tight text-graphite mb-3">Achievements</h3>
+          <ul className="space-y-2 list-none">
+            {achievements.map((a) => (
+              <li key={a.title} className="text-sm text-ink/80">
+                <span className="font-medium text-graphite">{a.title}:</span> {a.detail}
+                {a.href ? (
+                  <>
+                    {" "}
+                    <a
+                      href={a.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-graphite underline underline-offset-4 hover:text-graphiteHover"
+                    >
+                      Link
+                    </a>
+                  </>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </Section>
   )
 }

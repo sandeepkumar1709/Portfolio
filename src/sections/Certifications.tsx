@@ -1,7 +1,7 @@
 import { Section } from "../components/Section"
 import { motion, useReducedMotion } from "framer-motion"
 import { BadgeCheck, ExternalLink } from "lucide-react"
-import { certifications, achievements } from "../data/certifications"
+import { certifications } from "../data/certifications"
 
 interface CertificationsProps {
   variant?: "linen" | "sand"
@@ -138,39 +138,6 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
         ))}
       </div>
 
-      {achievements.length > 0 && (
-        <div className="mt-12">
-          <motion.h3
-            className="text-sm font-semibold tracking-tight text-graphite mb-3"
-            initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-          >
-            Achievements
-          </motion.h3>
-          <ul className="space-y-2 list-none">
-            {achievements.map((a) => (
-              <li key={a.title} className="text-sm text-[#1A1A1A]/80">
-                <span className="font-medium text-graphite">{a.title}:</span> {a.detail}
-                {a.href ? (
-                  <>
-                    {" "}
-                    <a
-                      href={a.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-graphite underline underline-offset-4 hover:text-graphiteHover"
-                    >
-                      Link
-                    </a>
-                  </>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </Section>
   )
 }

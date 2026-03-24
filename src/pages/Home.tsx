@@ -29,10 +29,10 @@ export default function Home() {
       <Hero />
       <About variant="sand" />
       <Skills variant="linen" />
-      <Certifications variant="sand" />
-      <Experience variant="linen" />
-      <Education variant="sand" />
+      <Experience variant="sand" />
       <Projects variant="linen" />
+      <Education variant="sand" />
+      <Certifications variant="linen" />
       <Contact variant="sand" />
     </main>
   )

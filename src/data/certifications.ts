@@ -19,6 +19,15 @@ export interface Achievement {
 
 export const certifications: Certification[] = [
   {
+    name: "Claude Code in Action",
+    issuer: "Anthropic Education",
+    type: "certification",
+    issued: "Mar 2026",
+    credentialId: "q6nbp99ka869",
+    credentialUrl: "https://verify.skilljar.com/c/q6nbp99ka869",
+    skills: ["Claude Code", "AI Engineering"],
+  },
+  {
     name: "Neo4j & GenerativeAI Fundamentals",
     issuer: "Neo4j",
     type: "certification",
