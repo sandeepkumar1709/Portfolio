@@ -97,6 +97,8 @@ export function Navbar() {
             <LiveClock />
             <a
               href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
             >
               Resume

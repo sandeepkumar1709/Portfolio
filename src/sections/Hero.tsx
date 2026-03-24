@@ -77,6 +77,14 @@ export function Hero() {
               >
                 Contact Me
               </a>
+              <a
+                href={site.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover hover:scale-105 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
+              >
+                Resume
+              </a>
             </div>
           </div>
         </div>
