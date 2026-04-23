@@ -8,6 +8,17 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
+    role: "Software Developer Intern",
+    organization: "GovieRates",
+    period: "Mar 2026 – Present",
+    highlights: [
+      "Built a middleware REST API layer (Java Spring Boot) that syncs data between the GovieRates accounting platform and Project Magnus (DCAA-compliant timesheet system), eliminating mismatches across client accounts.",
+      "Built an end-to-end onboarding flow: SSO JWT entry from GovieRates, Stripe subscriptions with a 7-tier pricing model, and automated multi-tenant provisioning—onboarded 30+ clients and grew subscriptions from $1,000 to $5,000/month.",
+      "Designing an agentic AI layer (LangGraph) to enable natural language querying and intelligent automation across GovieRates and Project Magnus.",
+    ],
+    stack: "Next.js 15, Java Spring Boot, MongoDB Atlas, JWT, Stripe, LangGraph, Azure Container Apps, SendGrid",
+  },
+  {
     role: "Research Software Engineer",
     organization: "University of Maryland",
     period: "Apr 2024 – Jan 2025",
@@ -33,7 +44,7 @@ export const experience: ExperienceEntry[] = [
       "Attained a 15% increase in Monthly Active Users (MAU) as measured by session tracking for assistive technology users, by engineering and launching a full-scale UI remediation that enhanced  overall product accessibility.",
     ],
     stack:
-      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, Cypher, GraphQL, Spring Boot, PyTorch, LLMs, NGINX, Docker, Kubernetes, Rancher, WACAG2.1 Compliance"
+      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, Cypher, GraphQL, Spring Boot, PyTorch, LLMs, NGINX, Docker, Kubernetes, Rancher, WCAG 2.1 compliance"
   },
   {
     role: "Software Developer & Instructor",
