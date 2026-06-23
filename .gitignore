@@ -12,6 +12,10 @@ linkedin_update.txt
 profile_context.md
 TODO.md
 cover_letter.docx
+
+# AI assistant config/context (do not commit)
+CLAUDE.md
+.claude/
 # Env and secrets
 .env
 .env.*
