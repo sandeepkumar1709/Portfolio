@@ -3,16 +3,17 @@ export interface ProjectCard {
   name: string
   oneLiner: string
   techTags: string[]
-  href?: string
+  href: string
 }
 
 export interface ProjectDetail extends ProjectCard {
-  contextProblem?: string
-  role?: string
-  architecture?: string
+  contextProblem: string
+  role: string
+  techStack: string
+  /** `null` means "deliberately not written yet", not "forgotten". */
+  architecture: string | null
+  improvements: string | null
   contributions?: string[]
-  techStack?: string
-  improvements?: string
   achievements?: string[]
 }
 
@@ -60,7 +61,7 @@ export const projects: ProjectDetail[] = [
     slug: "medical-scheduling-system",
     name: "Medical Scheduling System",
     oneLiner: "Full-stack healthcare scheduling with NumPy-based 2D sliding window algorithm for optimal appointment windows.",
-    techTags: ["Python", "FastAPI", "SQLAlchemy", "Angular 18", "JWT"],
+    techTags: ["Python", "FastAPI", "SQLAlchemy", "Angular", "JWT"],
     href: "https://github.com/sandeepkumar1709/medical-scheduling-system",
     contextProblem: "Healthcare providers need optimal appointment scheduling across multiple providers and care paths.",
     role: "Full-stack developer.",
@@ -69,6 +70,8 @@ export const projects: ProjectDetail[] = [
       "Interactive grid UI with drag-selection and care path composer.",
     ],
     techStack: "Python, FastAPI, SQLAlchemy, SQLite, Angular 18, JWT",
+    architecture: null,
+    improvements: null,
   },
   {
     slug: "n8n-weather-monitoring",
@@ -85,7 +88,7 @@ export const projects: ProjectDetail[] = [
       "Integrated Supabase for persistent weather logs and configurable multi-recipient email delivery.",
     ],
     techStack: "n8n, JavaScript, OpenWeatherMap API, Supabase, SMTP (Gmail), OpenAI (optional)",
-    improvements: "Support for multiple recipients and city-specific reports per person.",
+    improvements: "City-specific reports per recipient.",
   },
   {
     slug: "greboost",
@@ -96,6 +99,8 @@ export const projects: ProjectDetail[] = [
     contextProblem: "Students need a structured e-learning platform for GRE preparation.",
     role: "Full-stack developer.",
     techStack: "Angular, TypeScript, Flask, MongoDB, Vercel, GitHub Actions",
+    architecture: null,
+    improvements: null,
   },
   {
     slug: "local-rag",
@@ -106,6 +111,8 @@ export const projects: ProjectDetail[] = [
     contextProblem: "Users need to query PDFs locally without sending data to external APIs.",
     role: "Sole developer.",
     techStack: "Python, LangChain, ChromaDB, Chainlit, Ollama",
+    architecture: null,
+    improvements: null,
   },
   {
     slug: "tweet-sentiment-analyzer",
@@ -120,8 +127,9 @@ export const projects: ProjectDetail[] = [
       "Created interactive web UI for input and visualization of results.",
     ],
     techStack: "Python, Flask, NLP (TextBlob/NLTK), HTML, CSS",
+    architecture: null,
+    improvements: null,
   },
-  
   {
     slug: "crime-reporter",
     name: "Crime Reporter",
@@ -135,10 +143,28 @@ export const projects: ProjectDetail[] = [
       "Integrated ambulance request and hospital notification for victim health assistance.",
       "Implemented report status tracking and updates from authorities.",
     ],
-    techStack: "Flutter, Dart, Android",
-    improvements: "Full project documentation available via Drive link in repo README.",
+    techStack: "Flutter, Dart, Android, Firebase",
+    architecture: null,
+    improvements: null,
   },
 ]
+
+// Array order is the render order, and index 0/1 get the wide bento spans.
+const slugs = projects.map((p) => p.slug)
+if (new Set(slugs).size !== slugs.length) {
+  throw new Error(`Duplicate project slug: ${slugs.join(", ")}`)
+}
+for (const p of projects) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug)) {
+    throw new Error(`Project slug is not URL-safe: ${p.slug}`)
+  }
+  if (!p.href.startsWith("https://")) {
+    throw new Error(`Project href must be absolute https: ${p.slug}`)
+  }
+  if (p.techTags.length === 0) {
+    throw new Error(`Project has no techTags: ${p.slug}`)
+  }
+}
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
   return projects.find((p) => p.slug === slug)

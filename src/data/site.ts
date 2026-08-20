@@ -1,11 +1,15 @@
 export const site = {
   name: "Sandeep Poloju",
-  role: "Backend-focused full-stack engineer + AI infrastructure",
-  proofPoints: [
-    "Knowledge Graph platform at Infosys — Neo4j, GNN, multi-tenant SaaS",
-    "UMD AgriTech & RAG pipelines — AWS SageMaker, LangGraph, vector search",
-  ],
-  resumeUrl: "/resume.pdf",
+  /** Single source of truth for the positioning line. Rendered by Hero. */
+  role: "Backend-focused Full-stack Engineer & AI Infrastructure Architect",
+  /**
+   * Recruiters filter on these before they filter on skills, and the resume
+   * PDF already states "Open to Relocation". Fill both in and they render as
+   * one line under the Hero title; leave them empty and nothing renders.
+   */
+  location: "",
+  availability: "",
+  resumeUrl: "/Sandeep-Poloju-Resume.pdf",
   contact: {
     email: "sandeep1709.sde@gmail.com",
     linkedIn: "https://www.linkedin.com/in/sandeep-poloju",

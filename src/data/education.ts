@@ -3,8 +3,7 @@ export interface EducationEntry {
   school: string
   period: string
   gpa: string
-  highlights?: string
-  courses?: string[]
+  courses: string[]
 }
 
 export const education: EducationEntry[] = [
@@ -30,7 +29,7 @@ export const education: EducationEntry[] = [
     degree: "B.Tech, Computer Science",
     school: "CVR College of Engineering",
     period: "Aug 2017 – May 2021",
-    gpa: "CGPA: 9.49 / 10.0",
+    gpa: "CGPA: 9.49 / 10.00",
     courses: [
       "Problem Solving through C",
       "Data Structures (C / Java)",

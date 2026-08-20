@@ -1,40 +1,40 @@
 import { useParams, Link } from "react-router-dom"
 import { getProjectBySlug } from "../data/projects"
+import { useDocumentMeta } from "../hooks/useDocumentMeta"
+import { FOCUS_RING } from "../lib/styles"
+import NotFound from "./NotFound"
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>()
   const project = slug ? getProjectBySlug(slug) : undefined
 
-  if (!project) {
-    return (
-      <main id="main" className="max-w-3xl mx-auto px-4 py-16">
-        <p className="text-graphite/70">Project not found.</p>
-        <Link
-          to="/"
-          className="mt-4 inline-block text-graphite/80 hover:text-graphite underline underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded"
-        >
-          Back to home
-        </Link>
-      </main>
-    )
-  }
+  // Per-route title and description. Without this every project page shared
+  // the home page's title in search results and browser history.
+  useDocumentMeta(
+    project ? `${project.name} — Sandeep Poloju` : "Project not found | Sandeep Poloju",
+    project?.oneLiner
+  )
+
+  if (!project) return <NotFound kind="project" />
 
   return (
-    <main id="main" className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
       <Link
         to="/#projects"
-        className="inline-flex items-center min-h-[44px] text-graphite/70 hover:text-graphite text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded mb-8"
+        className={`inline-flex items-center min-h-[44px] text-graphite/70 hover:text-graphite text-sm rounded-full mb-8 ${FOCUS_RING}`}
       >
         ← Back to projects
       </Link>
 
-      <h1 className="text-2xl font-bold text-graphite mb-2">{project.name}</h1>
-      <p className="text-graphite/70 mb-6">{project.oneLiner}</p>
+      <h1 className="font-serif text-3xl md:text-4xl font-bold tracking-tight text-graphite mb-3 text-balance">
+        {project.name}
+      </h1>
+      <p className="text-lg text-ink/80 mb-8 max-w-[62ch]">{project.oneLiner}</p>
 
       <div className="space-y-8 text-ink/80">
         {project.contextProblem && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               Context / Problem
             </h2>
             <p>{project.contextProblem}</p>
@@ -43,7 +43,7 @@ export default function ProjectDetail() {
 
         {project.role && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               My role
             </h2>
             <p>{project.role}</p>
@@ -52,16 +52,25 @@ export default function ProjectDetail() {
 
         {project.architecture && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               Architecture overview
             </h2>
-            <p>{project.architecture}</p>
+            <ol role="list" className="space-y-1.5">
+              {project.architecture.split("→").map((step, i) => (
+                <li key={i} className="flex gap-3">
+                  <span aria-hidden className="select-none text-graphite/40 tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span>{step.trim().replace(/\.$/, "")}</span>
+                </li>
+              ))}
+            </ol>
           </section>
         )}
 
         {project.contributions && project.contributions.length > 0 && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               Key contributions & metrics
             </h2>
             <ul className="list-disc list-inside space-y-1">
@@ -72,18 +81,18 @@ export default function ProjectDetail() {
           </section>
         )}
 
-        {(project.techStack || project.techTags?.length) && (
+        {(project.techStack || project.techTags.length > 0) && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               Tech stack
             </h2>
-            <p>{project.techStack || project.techTags?.join(", ")}</p>
+            <p>{project.techStack || project.techTags.join(", ")}</p>
           </section>
         )}
 
         {project.improvements && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               What I'd improve
             </h2>
             <p>{project.improvements}</p>
@@ -92,7 +101,7 @@ export default function ProjectDetail() {
 
         {project.achievements && project.achievements.length > 0 && (
           <section>
-            <h2 className="text-lg font-semibold text-graphite mb-2">
+            <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
               Achievements
             </h2>
             <ul className="list-disc list-inside space-y-1">
@@ -110,7 +119,7 @@ export default function ProjectDetail() {
             href={project.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-graphite/80 hover:text-graphite underline underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded"
+            className={`inline-flex items-center min-h-[44px] text-graphite/80 hover:text-graphite underline underline-offset-4 rounded-full ${FOCUS_RING}`}
           >
             View on GitHub
           </a>

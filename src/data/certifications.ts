@@ -5,7 +5,6 @@ export interface Certification {
   issuer: string
   type: CredentialType
   issued: string
-  expires?: string
   credentialId?: string
   credentialUrl?: string
   skills?: string[]
@@ -17,6 +16,7 @@ export interface Achievement {
   href?: string
 }
 
+// Newest first. Array order is render order.
 export const certifications: Certification[] = [
   {
     name: "Claude Code in Action",
@@ -28,20 +28,12 @@ export const certifications: Certification[] = [
     skills: ["Claude Code", "AI Engineering"],
   },
   {
-    name: "Neo4j & GenerativeAI Fundamentals",
+    name: "Neo4j & Generative AI Fundamentals",
     issuer: "Neo4j",
     type: "certification",
     issued: "Nov 2025",
     credentialId: "77f05886-6881-487f-8875-5bb497b6e19b",
     credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b/",
-  },
-  {
-    name: "Teaching Assistant",
-    issuer: "Smart Interviews",
-    type: "certification",
-    issued: "Feb 2021",
-    skills: ["Data Structures", "Algorithms"],
-    credentialUrl: "https://smartinterviews.in/certificate/a30edf1e",
   },
   {
     name: "IBM watsonx Challenge",
@@ -60,11 +52,19 @@ export const certifications: Certification[] = [
     credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/7AQNTFNSWYRV",
   },
   {
+    name: "Teaching Assistant",
+    issuer: "Smart Interviews",
+    type: "certification",
+    issued: "Feb 2021",
+    skills: ["Data Structures", "Algorithms"],
+    credentialUrl: "https://smartinterviews.in/certificate/a30edf1e",
+  },
+  {
     name: "Problem Solving (Advanced) Certificate",
     issuer: "HackerRank",
     type: "certification",
     issued: "Sep 2020",
-    credentialId: "C57DFB490B59",
+    credentialId: "c57dfb490b59",
     credentialUrl: "https://www.hackerrank.com/certificates/c57dfb490b59",
   },
 ]
@@ -77,7 +77,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: "LeetCode daily consistency",
-    detail: "52-day streak with solutions + explanations (daily repo).",
+    detail: "52-day streak, with solutions and written explanations.",
     href: "https://github.com/sandeepkumar1709/Leetcode-Daily-Challenge",
   },
 ]

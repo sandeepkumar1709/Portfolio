@@ -3,6 +3,7 @@ import { Section } from "../components/Section"
 import { motion, useReducedMotion } from "framer-motion"
 import { FolderGit, ExternalLink } from "lucide-react"
 import { projects } from "../data/projects"
+import { trackEvent } from "../lib/analytics"
 
 interface ProjectsProps {
   variant?: "linen" | "sand"
@@ -25,28 +26,29 @@ export function Projects({ variant = "linen" }: ProjectsProps) {
   return (
     <Section id="projects" variant={variant}>
       <motion.p
-        className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+        className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         Selected work
       </motion.p>
       <motion.h2
-        className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-4 text-center md:text-left"
+        id="projects-heading"
+        className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-4 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         Projects
       </motion.h2>
       <motion.p
-        className="text-sm text-slate-700 max-w-2xl mb-10 text-center md:text-left"
+        className="text-sm text-ink/80 max-w-2xl mb-10 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         A mix of RAG systems, full-stack apps, and personal tools.
@@ -62,16 +64,17 @@ export function Projects({ variant = "linen" }: ProjectsProps) {
               key={project.slug}
               className={[
                 "relative overflow-hidden rounded-2xl border border-black/5",
-                "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6 md:p-7",
-                "transition-transform transition-shadow duration-200",
-                "hover:-translate-y-0.5 hover:shadow-md",
-                "focus-within:-translate-y-0.5 focus-within:shadow-md",
+                "shadow-card p-6 md:p-7",
+                "transition-[transform,box-shadow] duration-200",
+                "hover:shadow-card-hover",
+                "focus-within:shadow-card-hover",
                 bg,
                 span,
               ].join(" ")}
               initial={reducedMotion ? false : { opacity: 0, y: 14 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              whileHover={reducedMotion ? undefined : { y: -2 }}
+              viewport={{ once: true, amount: "some" }}
               transition={{
                 duration: 0.55,
                 ease: "easeOut",
@@ -99,10 +102,10 @@ export function Projects({ variant = "linen" }: ProjectsProps) {
               </div>
 
               <ul className="flex flex-wrap gap-2 list-none mb-4" role="list">
-                {project.techTags.slice(0, 5).map((tag) => (
+                {project.techTags.map((tag) => (
                   <li
                     key={tag}
-                    className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-[11px] text-ink whitespace-nowrap"
+                    className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-eyebrow text-ink"
                   >
                     {tag}
                   </li>
@@ -111,6 +114,7 @@ export function Projects({ variant = "linen" }: ProjectsProps) {
 
               <Link
                 to={`/projects/${project.slug}`}
+                onClick={() => trackEvent("project_open", { slug: project.slug })}
                 className="inline-flex items-center gap-1 text-sm font-medium text-graphite hover:text-graphiteHover underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded"
               >
                 View project <ExternalLink className="h-4 w-4" strokeWidth={1.6} />

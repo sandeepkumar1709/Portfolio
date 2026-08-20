@@ -8,9 +8,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install
@@ -30,3 +35,39 @@ jobs:
       - name: Build
         run: npm run build
 
+      # ---- Output gates. Lint and tsc both pass on a Tailwind class that
+      # compiles to nothing, which is how the serif font went missing from
+      # production for months. These check the artifact, not the source.
+
+      - name: Assert the design system reached the CSS
+        run: |
+          set -euo pipefail
+          css=$(ls dist/assets/*.css)
+          grep -q 'Playfair' "$css" \
+            || { echo "::error::Playfair is absent from the built CSS — headings are falling back to Inter"; exit 1; }
+          grep -q 'rgb(var(--color-linen)' "$css" \
+            || { echo "::error::linen token missing from built CSS — alpha utilities may have been dropped"; exit 1; }
+
+      - name: Assert no secret was inlined into the client bundle
+        run: |
+          if grep -rIqE '(sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|ghp_[A-Za-z0-9]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY)' dist; then
+            echo "::error::secret-shaped string found in dist/ — rotate it, do not just delete it"
+            exit 1
+          fi
+
+      - name: Assert the recruiter-facing artifacts shipped
+        run: |
+          set -euo pipefail
+          test -f dist/Sandeep-Poloju-Resume.pdf || { echo "::error::resume PDF missing from build output"; exit 1; }
+          test -f dist/robots.txt               || { echo "::error::robots.txt missing from build output"; exit 1; }
+          grep -q 'og:title' dist/index.html    || { echo "::error::share-preview tags missing"; exit 1; }
+
+      - name: JS size budget
+        run: |
+          set -euo pipefail
+          budget=140   # KB gzipped, all JS. Raise deliberately, in a reviewed commit.
+          actual=$(cat dist/assets/*.js | gzip -9 | wc -c)
+          actual_kb=$((actual / 1024))
+          echo "JS gzipped: ${actual_kb} KB / ${budget} KB budget"
+          [ "$actual_kb" -le "$budget" ] \
+            || { echo "::error::JS budget exceeded: ${actual_kb} KB > ${budget} KB"; exit 1; }

@@ -28,31 +28,32 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
   return (
     <Section id="certifications" variant={variant}>
       <motion.p
-        className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+        className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        Licenses & certifications
+        Certifications
       </motion.p>
       <motion.h2
-        className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-4 text-center md:text-left"
+        id="certifications-heading"
+        className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-4 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         Credentials
       </motion.h2>
       <motion.p
-        className="text-sm text-slate-700 max-w-2xl mb-10 text-center md:text-left"
+        className="text-sm text-ink/80 max-w-2xl mb-10 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        Verified learning and professional credentials that support the work I do.
+        Learning and professional credentials.
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-5">
@@ -61,10 +62,10 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
             key={`${cert.name}-${cert.issuer}`}
             className={[
               "relative overflow-hidden rounded-2xl border border-black/5",
-              "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6 md:p-7",
-              "transition-transform transition-shadow duration-200",
-              "hover:-translate-y-0.5 hover:shadow-md",
-              "focus-within:-translate-y-0.5 focus-within:shadow-md",
+              "shadow-card p-6 md:p-7",
+              "transition-[transform,box-shadow] duration-200",
+              "hover:shadow-card-hover",
+              "focus-within:shadow-card-hover",
               (styleByIssuer[cert.issuer]?.bg ??
                 styleByType[cert.type]?.bg ??
                 "bg-gradient-to-br from-stone-100/70 via-white/40 to-transparent"),
@@ -73,7 +74,8 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
             ].join(" ")}
             initial={reducedMotion ? false : { opacity: 0, y: 14 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            whileHover={reducedMotion ? undefined : { y: -2 }}
+            viewport={{ once: true, amount: "some" }}
             transition={{ duration: 0.55, ease: "easeOut", delay: reducedMotion ? 0 : idx * 0.06 }}
           >
             <span
@@ -93,15 +95,14 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
                 <h3 className="text-sm font-semibold tracking-tight text-graphite">
                   {cert.name}
                 </h3>
-                <p className="mt-0.5 text-xs text-[#1A1A1A]/70">
+                <p className="mt-0.5 text-xs text-ink/70">
                   {cert.issuer} · Issued {cert.issued}
-                  {cert.expires ? ` · Expires ${cert.expires}` : "" }
                 </p>
 
-                {(cert.credentialId || cert.skills?.length) && (
+                {(cert.credentialId || (cert.skills && cert.skills.length > 0)) && (
                   <div className="mt-4 space-y-2">
                     {cert.credentialId && (
-                      <p className="text-xs text-[#1A1A1A]/70">
+                      <p className="text-xs text-ink/70">
                         <span className="font-medium text-graphite/80">Credential ID:</span> {cert.credentialId}
                       </p>
                     )}
@@ -110,7 +111,7 @@ export function Certifications({ variant = "linen" }: CertificationsProps) {
                         {cert.skills.map((s) => (
                           <li
                             key={s}
-                            className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-[11px] text-ink whitespace-nowrap"
+                            className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-eyebrow text-ink whitespace-nowrap"
                           >
                             {s}
                           </li>

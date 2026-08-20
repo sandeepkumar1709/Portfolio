@@ -1,7 +1,11 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect, useRef } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { site } from "../data/site"
 import { LiveClock } from "./LiveClock"
+import { useReducedMotion } from "../hooks/useReducedMotion"
+import { scrollToId, scrollToTop } from "../lib/scroll"
+import { FOCUS_RING, TAP_TARGET } from "../lib/styles"
+import { trackEvent } from "../lib/analytics"
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -16,147 +20,160 @@ const NAV_LINKS = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
-  const location = useLocation()
-  const { pathname, hash } = location
+  const { pathname, hash } = useLocation()
+  const reducedMotion = useReducedMotion()
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
+  const closeMenu = useCallback(() => {
+    setMobileOpen(false)
+    // The panel is display:none when closed, which would destroy focus if it
+    // still lived on one of the links. Put it back on the trigger.
+    menuButtonRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu()
+    }
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [mobileOpen, closeMenu])
 
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault()
 
-      // If we're already on the home page, scroll directly to the section
-      if (pathname === "/") {
-        const id = href.startsWith("#") ? href.slice(1) : href
-        const el = id ? document.getElementById(id) : null
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" })
-        } else {
-          // Fallback: update hash so Home effect can handle it if needed
-          navigate(href === "#" ? "/" : `/${href}`)
-        }
+      // Always write the hash. That is what makes sections shareable, gives
+      // Back something to return to, and lets the active-nav state resolve.
+      if (pathname === "/" && hash === href) {
+        // Same target: no location change would fire, so scroll directly.
+        scrollToId(href.slice(1), reducedMotion)
       } else {
-        // If we're on a different route, navigate so Home can handle the scroll on mount
-        navigate(href === "#" ? "/" : `/${href}`)
+        navigate(`/${href}`)
       }
 
       setMobileOpen(false)
     },
-    [navigate, pathname]
+    [navigate, pathname, hash, reducedMotion]
   )
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md border-b border-black/5 bg-linen/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
         <a
           href="/"
           onClick={(e) => {
+            e.preventDefault()
             if (pathname === "/") {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              scrollToTop(reducedMotion)
             } else {
-              e.preventDefault()
               navigate("/")
             }
             setMobileOpen(false)
           }}
-          className="text-sm font-semibold tracking-tight text-graphite focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded-full"
+          aria-label="Sandeep Poloju — back to top"
+          className={`${TAP_TARGET} -ml-2 inline-flex items-center justify-center px-2 font-serif text-base font-bold tracking-tight text-graphite rounded-full ${FOCUS_RING}`}
         >
           SP
         </a>
 
-        <nav aria-label="Main navigation" className="flex items-center gap-4">
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-3 focus:py-2 focus:bg-neutral-800 focus:text-white focus:rounded"
-          >
-            Skip to main content
-          </a>
+        {/* Desktop nav moves in at lg, not md: at 768px the seven labels plus
+            the clock and the CTA need ~833px and only have 720px. */}
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-4">
+          <ul className="flex items-center gap-1">
+            {NAV_LINKS.map(({ label, href }) => {
+              const active = pathname === "/" && hash === href
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={(e) => handleNavClick(e, href)}
+                    aria-current={active ? "true" : undefined}
+                    className={`${TAP_TARGET} inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium ${FOCUS_RING} ${
+                      active ? "text-graphite bg-black/5" : "text-graphite/70 hover:text-graphite"
+                    }`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
 
-          <ul className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map(({ label, href }) => (
+          <LiveClock />
+
+          <a
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent("resume_open", { placement: "navbar" })}
+            className={`${TAP_TARGET} inline-flex items-center justify-center px-5 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover ${FOCUS_RING}`}
+          >
+            Resume
+          </a>
+        </nav>
+
+        {/* Mobile: keep the resume reachable without opening the menu — it is
+            the one action a recruiter came for. */}
+        <div className="lg:hidden flex items-center gap-1">
+          <a
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent("resume_open", { placement: "navbar_mobile" })}
+            className={`${TAP_TARGET} inline-flex items-center justify-center px-4 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover ${FOCUS_RING}`}
+          >
+            Resume
+          </a>
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            id="menu-button"
+            onClick={() => setMobileOpen((o) => !o)}
+            className={`${TAP_TARGET} inline-flex items-center justify-center rounded-full text-graphite ${FOCUS_RING}`}
+          >
+            <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* A disclosure, not a dialog: it does not cover the page, so claiming
+          role="dialog" promised modal behaviour that never existed. */}
+      <nav
+        id="mobile-menu"
+        aria-label="Mobile navigation"
+        className={`lg:hidden border-t border-black/5 bg-linen/95 backdrop-blur-md ${mobileOpen ? "block" : "hidden"}`}
+      >
+        <ul className="px-4 py-3 space-y-1">
+          {NAV_LINKS.map(({ label, href }) => {
+            const active = pathname === "/" && hash === href
+            return (
               <li key={href}>
-                {/*
-                  Basic active state: highlight when on home route
-                  and the current hash matches the link target.
-                */}
                 <a
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen ${
-                    pathname === "/" && hash === href
-                      ? "text-graphite"
-                      : "text-graphite/70 hover:text-graphite"
-                  }`.trim()}
+                  aria-current={active ? "true" : undefined}
+                  className={`min-h-[44px] flex items-center px-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-inset ${
+                    active ? "text-graphite font-medium bg-black/5" : "text-graphite/80 hover:text-graphite hover:bg-black/5"
+                  }`}
                 >
                   {label}
                 </a>
               </li>
-            ))}
-          </ul>
-
-          <div className="hidden md:flex items-center gap-4">
-            <LiveClock />
-            <a
-              href={site.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
-            >
-              Resume
-            </a>
-          </div>
-
-          <div className="md:hidden flex items-center gap-2">
-            <button
-              type="button"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              id="menu-button"
-              onClick={() => setMobileOpen((o) => !o)}
-              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen text-graphite"
-            >
-              <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden
-              >
-                {mobileOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </div>
-
-      <div
-        id="mobile-menu"
-        role="dialog"
-        aria-label="Mobile menu"
-        className={`md:hidden border-t border-black/5 bg-linen/95 ${mobileOpen ? "block" : "hidden"}`}
-      >
-        <ul className="px-4 py-3 space-y-1">
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={href}>
-              <a
-                href={href}
-                onClick={(e) => handleNavClick(e, href)}
-                className={`min-h-[44px] flex items-center px-3 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-inset ${
-                  pathname === "/" && hash === href
-                    ? "text-graphite font-medium bg-black/5"
-                    : "text-graphite/80 hover:text-graphite hover:bg-black/5"
-                }`.trim()}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
+            )
+          })}
         </ul>
-      </div>
+      </nav>
     </header>
   )
 }
