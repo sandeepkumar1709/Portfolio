@@ -13,19 +13,20 @@ export function Experience({ variant = "linen" }: ExperienceProps) {
   return (
     <Section id="experience" variant={variant}>
       <motion.p
-        className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+        className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         Professional journey
       </motion.p>
       <motion.h2
-        className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-10 text-center md:text-left"
+        id="experience-heading"
+        className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-10 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         Work experience
@@ -37,14 +38,9 @@ export function Experience({ variant = "linen" }: ExperienceProps) {
           aria-hidden
         />
 
-        <ul className="space-y-8 md:space-y-10 list-none">
+        <ul role="list" className="space-y-8 md:space-y-10 list-none">
           {experience.map((entry, idx) => {
-            const dot =
-              entry.organization === "University of Maryland"
-                ? "bg-indigo-400"
-                : entry.organization === "Infosys"
-                  ? "bg-emerald-400"
-                  : "bg-amber-400"
+            const dot = idx === 0 ? "bg-graphite" : "bg-graphite/40"
 
             return (
               <li key={`${entry.organization}-${entry.period}-${entry.role}`} className="relative pl-10">
@@ -60,12 +56,13 @@ export function Experience({ variant = "linen" }: ExperienceProps) {
                 <motion.article
                   className={[
                     "rounded-2xl border border-black/5 bg-white/50",
-                    "shadow-[0_1px_0_rgba(0,0,0,0.02)]",
+                    "shadow-card",
                     "p-6 md:p-7",
                   ].join(" ")}
                   initial={reducedMotion ? false : { opacity: 0, y: 14 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
+                  whileHover={reducedMotion ? undefined : { y: -2 }}
+                  viewport={{ once: true, amount: "some" }}
                   transition={{ duration: 0.55, ease: "easeOut", delay: reducedMotion ? 0 : idx * 0.04 }}
                 >
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -80,10 +77,12 @@ export function Experience({ variant = "linen" }: ExperienceProps) {
                     </div>
 
                     <div className="flex flex-col gap-2 text-sm text-graphite/70 md:items-end">
-                      <span className="inline-flex items-center gap-2">
-                        <MapPin className="h-4 w-4" strokeWidth={1.6} aria-hidden />
-                        <span className="truncate">Remote / Hybrid</span>
-                      </span>
+                      {entry.location && (
+                        <span className="inline-flex items-center gap-2">
+                          <MapPin className="h-4 w-4" strokeWidth={1.6} aria-hidden />
+                          <span className="truncate">{entry.location}</span>
+                        </span>
+                      )}
                       <span className="inline-flex items-center gap-2">
                         <CalendarDays className="h-4 w-4" strokeWidth={1.6} aria-hidden />
                         <span className="truncate">{entry.period}</span>

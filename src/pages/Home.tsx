@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { useReducedMotion } from "../hooks/useReducedMotion"
+import { useDocumentMeta } from "../hooks/useDocumentMeta"
+import { scrollToId } from "../lib/scroll"
 import { Hero } from "../sections/Hero"
 import { About } from "../sections/About"
 import { Skills } from "../sections/Skills"
@@ -14,18 +16,18 @@ export default function Home() {
   const { hash } = useLocation()
   const reducedMotion = useReducedMotion()
 
+  useDocumentMeta(
+    "Sandeep Poloju | Backend & AI Infrastructure Engineer",
+    "Backend-focused full-stack engineer working on AI infrastructure. Neo4j knowledge graphs, RAG pipelines, and LangGraph orchestration. UMD M.Eng, 3.93 GPA."
+  )
+
   useEffect(() => {
-    if (hash) {
-      const id = hash.slice(1)
-      const el = id ? document.getElementById(id) : null
-      if (el) {
-        el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" })
-      }
-    }
+    if (!hash) return
+    scrollToId(hash.slice(1), reducedMotion)
   }, [hash, reducedMotion])
 
   return (
-    <main id="main">
+    <main id="main" tabIndex={-1}>
       <Hero />
       <About variant="sand" />
       <Skills variant="linen" />

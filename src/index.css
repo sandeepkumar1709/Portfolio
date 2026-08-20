@@ -3,16 +3,22 @@
 @tailwind utilities;
 
 :root {
-  /* Premium Architectural palette */
-  --color-linen: #FDFCF0;
-  --color-sand: #FAF9F2;
-  --color-ink: #1A1A1A;
-  --color-graphite: #2D3027;
-  --color-graphite-hover: #1F211B;
+  /* Premium Architectural palette.
+     Stored as space-separated RGB channels so Tailwind can compose alpha
+     modifiers (bg-linen/80, text-graphite/70) via <alpha-value>. */
+  --color-linen: 253 252 240;          /* #FDFCF0 */
+  --color-sand: 250 249 242;           /* #FAF9F2 */
+  --color-ink: 26 26 26;               /* #1A1A1A */
+  --color-graphite: 45 48 39;          /* #2D3027 */
+  --color-graphite-hover: 31 33 27;    /* #1F211B */
 
   /* Backwards-compatible "accent" alias */
   --color-accent: var(--color-graphite);
   --color-accent-hover: var(--color-graphite-hover);
+
+  /* The site commits to a single light palette. Declaring it here is what
+     opts out of Chrome Android's auto-dark remap, which !important cannot. */
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -27,6 +33,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header is h-14 (56px); keep anchor targets clear of it. */
+  scroll-padding-top: 3.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -35,11 +43,68 @@ html {
   }
 }
 
+@layer utilities {
+  /* Full-viewport section height that accounts for mobile browser chrome.
+     svh (small viewport height) is stable; dvh would be wrong here because
+     eight stacked dvh sections move the document height ~480px during a
+     single scroll gesture. */
+  .min-h-vscreen {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+}
+
 @layer base {
   body {
-    background-color: var(--color-linen) !important;
-    color: var(--color-ink) !important;
+    background-color: rgb(var(--color-linen));
+    color: rgb(var(--color-ink));
     margin: 0;
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+/* Scroll-reveal animations write inline opacity:0, and IntersectionObserver
+   does not fire during print layout — without this, every section the visitor
+   never scrolled past prints blank. An author !important is the only thing
+   that outranks an inline style. */
+@media print {
+  *,
+  *::before,
+  *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  section {
+    min-height: 0 !important;
+    break-inside: auto;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Chrome suppresses backgrounds when printing, which would render the
+     dark-filled CTAs as white-on-white. */
+  a {
+    color: #000 !important;
+    background: none !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    word-break: break-all;
+  }
+
+  header,
+  footer,
+  [data-print-hide] {
+    display: none !important;
   }
 }

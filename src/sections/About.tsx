@@ -44,19 +44,20 @@ export function About({ variant = "linen" }: AboutProps) {
     <Section id="about" variant={variant}>
       <div className="w-full">
         <motion.p
-          className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+          className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
           initial={reducedMotion ? false : { opacity: 0, y: 10 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: "some" }}
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
           About me
         </motion.p>
         <motion.h2
-          className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-8 text-center md:text-left"
+          id="about-heading"
+          className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-8 text-center md:text-left"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: "some" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
           Passionate about technology and innovation
@@ -67,10 +68,10 @@ export function About({ variant = "linen" }: AboutProps) {
             {aboutCopy.split("\n\n").map((para) => (
               <motion.p
                 key={para.slice(0, 24)}
-                className="text-[#1A1A1A]/80 leading-relaxed"
+                className="text-ink/80 leading-relaxed"
                 initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
+                viewport={{ once: true, amount: "some" }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 {para}
@@ -84,10 +85,10 @@ export function About({ variant = "linen" }: AboutProps) {
                 key={card.title}
                 className={[
                   "group relative overflow-hidden rounded-2xl border border-black/5",
-                  "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6 md:p-7",
-                  "transition-transform transition-shadow duration-200",
-                  "hover:-translate-y-0.5 hover:shadow-md",
-                  "focus-within:-translate-y-0.5 focus-within:shadow-md",
+                  "shadow-card p-6 md:p-7",
+                  "transition-[transform,box-shadow] duration-200",
+                  "hover:shadow-card-hover",
+                  "focus-within:shadow-card-hover",
                   idx === 0
                     ? "bg-gradient-to-br from-amber-100/60 via-white/40 to-transparent"
                     : idx === 1
@@ -96,7 +97,8 @@ export function About({ variant = "linen" }: AboutProps) {
                 ].join(" ")}
                 initial={reducedMotion ? false : { opacity: 0, y: 14 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
+                whileHover={reducedMotion ? undefined : { y: -2 }}
+                viewport={{ once: true, amount: "some" }}
                 transition={{ duration: 0.55, ease: "easeOut", delay: reducedMotion ? 0 : idx * 0.06 }}
               >
                 <span
@@ -128,7 +130,7 @@ export function About({ variant = "linen" }: AboutProps) {
                     <p className="text-sm font-semibold tracking-tight text-graphite">
                       {card.title}
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-700">
+                    <p className="mt-1 text-sm leading-relaxed text-ink/80">
                       {card.body}
                     </p>
                   </div>

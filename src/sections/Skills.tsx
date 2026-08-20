@@ -48,28 +48,29 @@ export function Skills({ variant = "linen" }: SkillsProps) {
   return (
     <Section id="skills" variant={variant}>
       <motion.p
-        className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+        className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         Technical skills
       </motion.p>
       <motion.h2
-        className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-4 text-center md:text-left"
+        id="skills-heading"
+        className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-4 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         My expertise
       </motion.h2>
       <motion.p
-        className="text-sm text-slate-700 max-w-2xl mb-10 text-center md:text-left"
+        className="text-sm text-ink/80 max-w-2xl mb-10 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         A deliberately chosen toolkit for backend systems, AI infrastructure, and product delivery.
@@ -96,16 +97,17 @@ export function Skills({ variant = "linen" }: SkillsProps) {
               key={category}
               className={[
                 "relative overflow-hidden rounded-2xl border border-black/5",
-                "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6",
-                "transition-transform transition-shadow duration-200",
-                "hover:-translate-y-0.5 hover:shadow-md",
-                "focus-within:-translate-y-0.5 focus-within:shadow-md",
+                "shadow-card p-6",
+                "transition-[transform,box-shadow] duration-200",
+                "hover:shadow-card-hover",
+                "focus-within:shadow-card-hover",
                 style.bg,
                 span,
               ].join(" ")}
               initial={reducedMotion ? false : { opacity: 0, y: 14 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              whileHover={reducedMotion ? undefined : { y: -2 }}
+              viewport={{ once: true, amount: "some" }}
               transition={{ duration: 0.55, ease: "easeOut", delay: reducedMotion ? 0 : idx * 0.06 }}
             >
               {/* subtle “architectural” corner line */}
@@ -117,18 +119,18 @@ export function Skills({ variant = "linen" }: SkillsProps) {
               <div className="flex items-start gap-3 mb-4">
                 <span
                   aria-hidden
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/60 ring-1 ring-black/5 text-[#2D3027]"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/60 ring-1 ring-black/5 text-graphite"
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.6} />
                 </span>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold tracking-tight text-[#2D3027]">
+                    <h3 className="text-sm font-semibold tracking-tight text-graphite">
                       {category}
                     </h3>
                   </div>
                   {desc && (
-                    <p className="mt-0.5 text-xs text-[#1A1A1A]/70">
+                    <p className="mt-0.5 text-xs text-ink/70">
                       {desc}
                     </p>
                   )}
@@ -139,7 +141,7 @@ export function Skills({ variant = "linen" }: SkillsProps) {
                 {items.map((item) => (
                   <li
                     key={item}
-                    className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-xs text-[#1A1A1A] whitespace-nowrap"
+                    className="px-3 py-1 rounded-full bg-white/70 border border-black/5 text-xs text-ink whitespace-nowrap"
                   >
                     {item}
                   </li>

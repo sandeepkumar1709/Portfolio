@@ -2,6 +2,8 @@ import { Section } from "../components/Section"
 import { site } from "../data/site"
 import { motion, useReducedMotion } from "framer-motion"
 import { Mail, Phone, Linkedin, Github } from "lucide-react"
+import { trackEvent } from "../lib/analytics"
+import { FOCUS_RING } from "../lib/styles"
 
 const contactItems: Array<{
   label: string
@@ -10,6 +12,7 @@ const contactItems: Array<{
   icon: typeof Mail
   bg: string
   external?: boolean
+  onSelect: () => void
 }> = [
   {
     label: "Email",
@@ -17,13 +20,15 @@ const contactItems: Array<{
     href: `mailto:${site.contact.email}`,
     icon: Mail,
     bg: "bg-gradient-to-br from-sky-100/70 via-white/40 to-transparent",
+    onSelect: () => trackEvent("email_click", { placement: "contact_card" }),
   },
   {
     label: "Phone",
     value: site.contact.phone,
-    href: `tel:${site.contact.phone.replace(/\s/g, "")}`,
+    href: `tel:${site.contact.phone.replace(/[^\d+]/g, "")}`,
     icon: Phone,
     bg: "bg-gradient-to-br from-emerald-100/70 via-white/40 to-transparent",
+    onSelect: () => trackEvent("email_click", { placement: "contact_card" }),
   },
   {
     label: "LinkedIn",
@@ -32,6 +37,7 @@ const contactItems: Array<{
     external: true,
     icon: Linkedin,
     bg: "bg-gradient-to-br from-indigo-100/70 via-white/40 to-transparent",
+    onSelect: () => trackEvent("social_click", { network: "linkedin", placement: "contact_card" }),
   },
   {
     label: "GitHub",
@@ -40,11 +46,12 @@ const contactItems: Array<{
     external: true,
     icon: Github,
     bg: "bg-gradient-to-br from-amber-100/70 via-white/40 to-transparent",
+    onSelect: () => trackEvent("social_click", { network: "github", placement: "contact_card" }),
   },
 ]
 
 const invitationCopy =
-  "I am at my best when I am solving real problems or finding ways to improve how people work. If you have a vision you are building or just want to connect over a shared interest in software, fitness, or cooking, I would love to hear from you. I value good conversations and new perspectives. Let's connect."
+  "I am at my best when I am solving real problems or finding ways to improve how people work. If you have a vision you are building or just want to connect over a shared interest in software, fitness, or cooking, I would love to hear from you."
 
 interface ContactProps {
   variant?: "linen" | "sand"
@@ -56,19 +63,20 @@ export function Contact({ variant = "linen" }: ContactProps) {
   return (
     <Section id="contact" variant={variant}>
       <motion.p
-        className="text-graphite/80 text-[11px] font-medium tracking-[0.32em] uppercase mb-2 text-center md:text-left"
+        className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         Get in touch
       </motion.p>
       <motion.h2
-        className="text-2xl md:text-4xl font-bold font-[&quot;Playfair Display&quot;,_serif] tracking-tight text-graphite mb-4 text-center md:text-left"
+        id="contact-heading"
+        className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-4 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 12 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         Let&apos;s connect
@@ -77,7 +85,7 @@ export function Contact({ variant = "linen" }: ContactProps) {
         className="text-sm text-ink/80 max-w-2xl mb-10 text-center md:text-left leading-relaxed"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {invitationCopy}
@@ -95,17 +103,19 @@ export function Contact({ variant = "linen" }: ContactProps) {
               key={item.label}
               href={item.href}
               {...linkProps}
+              onClick={item.onSelect}
               className={[
                 "group relative overflow-hidden rounded-2xl border border-black/5",
-                "shadow-[0_1px_0_rgba(0,0,0,0.02)] p-6",
-                "transition-transform transition-shadow duration-200",
-                "hover:-translate-y-0.5 hover:shadow-md",
+                "shadow-card p-6",
+                "transition-[transform,box-shadow] duration-200",
+                "hover:shadow-card-hover",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen rounded-2xl",
                 item.bg,
               ].join(" ")}
               initial={reducedMotion ? false : { opacity: 0, y: 14 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
+              whileHover={reducedMotion ? undefined : { y: -2 }}
+              viewport={{ once: true, amount: "some" }}
               transition={{
                 duration: 0.55,
                 ease: "easeOut",
@@ -125,10 +135,10 @@ export function Contact({ variant = "linen" }: ContactProps) {
                   <Icon className="h-4 w-4" strokeWidth={1.6} />
                 </span>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-medium tracking-wider uppercase text-graphite/70">
+                  <p className="text-eyebrow font-medium tracking-wider uppercase text-graphite/70">
                     {item.label}
                   </p>
-                  <p className="mt-1 text-sm font-medium text-graphite truncate group-hover:text-graphiteHover">
+                  <p title={item.value} className="mt-1 text-sm font-medium text-graphite break-words group-hover:text-graphiteHover">
                     {item.value}
                   </p>
                 </div>
@@ -142,12 +152,13 @@ export function Contact({ variant = "linen" }: ContactProps) {
         className="mt-10 text-center md:text-left"
         initial={reducedMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <a
           href={`mailto:${site.contact.email}`}
-          className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-linen"
+          onClick={() => trackEvent("email_click", { placement: "contact_cta" })}
+          className={`min-h-[44px] inline-flex items-center justify-center px-8 rounded-full bg-graphite text-white text-sm font-medium hover:bg-graphiteHover transition-colors ${FOCUS_RING}`}
         >
           <Mail className="h-4 w-4 mr-2" strokeWidth={1.6} />
           Send me an email

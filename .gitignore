@@ -32,3 +32,9 @@ Thumbs.db
 
 
 reference
+# Markdown notes / AI context — keep only the public README committed
+*.md
+!README.md
+
+# Audit agent roster (local working file)
+rooster.txt
