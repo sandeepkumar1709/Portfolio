@@ -58,10 +58,11 @@ export function Hero() {
           )}
 
           <p className="text-lg leading-relaxed max-w-[62ch] text-ink/80 mx-auto md:mx-0 mt-4 mb-8">
-            UMD Software Engineering graduate (3.93 GPA). I&rsquo;ve spent the last few
-            years on knowledge-graph and search infrastructure for Fortune 500 clients,
-            and I now build backend services and retrieval systems: hybrid search,
-            reranking, and answers that cite the evidence they came from.
+            UMD Software Engineering graduate (3.93 GPA). At Acculevel I build the whole
+            path from a business requirement to working software: data pipelines,
+            automation tools, full-stack services and AI automations that take manual
+            work off people&rsquo;s plates. Before that, knowledge-graph and search
+            infrastructure for Fortune 500 clients.
           </p>
 
           <div className="flex flex-col gap-6 md:gap-4 items-center md:items-start">

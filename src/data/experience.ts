@@ -35,7 +35,12 @@ export const experience: ExperienceEntry[] = [
       "Raised review-attribution accuracy from 63% to 99% by adding Google SSO to the existing QR flow, replacing an inference from appointment time and listing with a direct identity match.",
       "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools, read-only by construction, so executives run ranking, decay and traffic-drop analysis without manual pulls.",
       "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
-      "Implemented the hosting vendor's prescribed origin-lockdown pattern, then disproved it with a single request: the response came back carrying the vendor's own CDN fingerprints, which meant a header-presence check could never tell our edge apart from theirs. Escalated with three named alternatives and split the finding rather than closing the half that was still unresolved.",
+      /*
+       * The origin-lockdown / double-CDN bullet was removed 2026-08-21: he
+       * could not tell what it meant, which is fatal for a bullet he has to
+       * defend out loud. Do not re-add it in that form. If it ever returns it
+       * needs plain language, not the dossier's vocabulary.
+       */
       "Found the apex domain being served by proxied A records instead of a CNAME, so the firewall rules that looked live in the dashboard were never applying to root-domain traffic. Switching to a proxied CNAME made caching start working and put the rules in front of production traffic for the first time.",
       "Established that roughly three quarters of billed traffic was non-human crawling and that the busiest URLs accounted for only a fraction of bandwidth, so no per-asset optimisation could have won. Moved blocking from the origin to the edge, where requests stop before they are paid for.",
       "Diagnosed a site-wide 504 outage by first clearing my own firewall change from the day before, then attributing 2,694 events across cloud scrapers, AI crawlers and our own uptime monitor, while explicitly preserving the search crawlers that generate leads.",
