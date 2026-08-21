@@ -18,15 +18,27 @@ export const experience: ExperienceEntry[] = [
     period: "June 2026 – Present",
     location: "Lafayette, IN",
     highlights: [
-      "Sole engineer on a review-attribution platform from requirements to production, replacing an untestable low-code workflow that decided salesperson commissions; FastAPI, React and Postgres on Azure across 200 Google Business Profiles.",
-      "Closed the attribution loop end to end with no human in the path: appointment, QR code, customer scan, Google review, advisor credit.",
-      "Chose the matching key from measurement rather than intuition. Avatar image IDs looked deterministic but turned out to be split across two Google namespaces, while display names were present on every one of 5,503 real reviews; an avatar-first matcher would have missed 2,053 of them and failed the first real payout on day one.",
+      /*
+       * Eight bullets, chosen with Sandeep 2026-08-21. Deliberately dropped:
+       * the Search Console analysis tooling and the 672-test/cost bullet (both
+       * substantially agent-authored, and he does not want credit for them),
+       * plus the UI/UX-review-and-audit bullet and the edge-rule-design bullet
+       * on length. The avatar-vs-display-name matching story came off too: it
+       * reads bigger than it felt to him. Do not re-add any of these.
+       *
+       * The edge/security bullets are written at the level of reasoning only:
+       * no origin addresses, no rule contents, no thresholds. Those would be
+       * an evasion map for a site that is still live, and one half of the
+       * origin-lockdown finding is deliberately still open.
+       */
+      "Sole engineer on a review-attribution platform from requirements to production, replacing an untestable low-code workflow that decided salesperson commissions; FastAPI, React and Postgres on Azure across 200 Google Business Profiles. It closes the loop with no human in the path: appointment, QR code, customer scan, Google review, advisor credit.",
       "Raised review-attribution accuracy from 63% to 99% by adding Google SSO to the existing QR flow, replacing an inference from appointment time and listing with a direct identity match.",
       "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools, read-only by construction, so executives run ranking, decay and traffic-drop analysis without manual pulls.",
-      "Made the analysis the product rather than the data access on the Search Console side: queries ranking 5 to 20 on high impressions for upside, pages losing the most clicks against the prior equal period for decay, self-competition detection, and a traffic-drop diagnostic that separates ranking loss from demand loss from click-through loss.",
       "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
-      "Commissioned a six-discipline UI/UX review, fixed every Critical and High finding, then audited the fix pass and found 16 further defects, including a test that asserted the bug instead of catching it, which is why every QR email had been going out with a malformed date.",
-      "Backed the payout path with 672 offline tests; the whole service runs for roughly $13 a month.",
+      "Implemented the hosting vendor's prescribed origin-lockdown pattern, then disproved it with a single request: the response came back carrying the vendor's own CDN fingerprints, which meant a header-presence check could never tell our edge apart from theirs. Escalated with three named alternatives and split the finding rather than closing the half that was still unresolved.",
+      "Found the apex domain being served by proxied A records instead of a CNAME, so the firewall rules that looked live in the dashboard were never applying to root-domain traffic. Switching to a proxied CNAME made caching start working and put the rules in front of production traffic for the first time.",
+      "Established that roughly three quarters of billed traffic was non-human crawling and that the busiest URLs accounted for only a fraction of bandwidth, so no per-asset optimisation could have won. Moved blocking from the origin to the edge, where requests stop before they are paid for.",
+      "Diagnosed a site-wide 504 outage by first clearing my own firewall change from the day before, then attributing 2,694 events across cloud scrapers, AI crawlers and our own uptime monitor, while explicitly preserving the search crawlers that generate leads.",
     ],
     stack: "Python, FastAPI, React, PostgreSQL, Azure (App Service, Functions, Key Vault), Databricks, MCP, LLM vision",
   },
