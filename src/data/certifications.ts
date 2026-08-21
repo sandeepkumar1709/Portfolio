@@ -73,7 +73,7 @@ export const achievements: Achievement[] = [
   {
     title: "Publication",
     detail:
-      "“Analyzing Twitter Event Hype vs. Reality” — NLP sentiment analysis, IJRAR.",
+      "“Analyzing Event Hype and Reality on Twitter” — co-author (2nd of 4), IJRAR Vol 10 Issue 3, July 2023.",
     href: "https://www.ijrar.org/papers/IJRAR23C1279.pdf",
   },
   {

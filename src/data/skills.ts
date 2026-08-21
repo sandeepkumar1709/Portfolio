@@ -17,8 +17,13 @@ export const skills: SkillCategory[] = [
     items: ["Angular", "React", "Flutter", "HTML5", "SCSS", "RxJS"],
   },
   {
+    /**
+     * Django and gRPC removed: no source in the corpus evidences either, and
+     * the backend work is consistently FastAPI/Flask/Spring Boot. A listed
+     * skill is an invitation to be questioned on it.
+     */
     category: "Backend",
-    items: ["Spring Boot", "FastAPI", "Flask", "Django", "GraphQL", "gRPC"],
+    items: ["Spring Boot", "FastAPI", "Flask", "GraphQL", "REST APIs"],
   },
   {
     category: "DevOps",

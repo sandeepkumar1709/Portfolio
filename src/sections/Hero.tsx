@@ -58,10 +58,10 @@ export function Hero() {
           )}
 
           <p className="text-lg leading-relaxed max-w-[62ch] text-ink/80 mx-auto md:mx-0 mt-4 mb-8">
-            UMD Software Engineering graduate (3.93 GPA) with 3+ years of professional
-            experience building scalable platforms for Fortune 500 clients. I work across
-            backend infrastructure and agentic AI, with RAG pipelines and LangGraph
-            orchestration.
+            UMD Software Engineering graduate (3.93 GPA). I&rsquo;ve spent the last few
+            years on knowledge-graph and search infrastructure for Fortune 500 clients,
+            and I now build backend services and retrieval systems &mdash; hybrid search,
+            reranking, and answers that cite the evidence they came from.
           </p>
 
           <div className="flex flex-col gap-6 md:gap-4 items-center md:items-start">

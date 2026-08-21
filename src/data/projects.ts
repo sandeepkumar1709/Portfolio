@@ -33,11 +33,14 @@ export const projects: ProjectDetail[] = [
       "Citation-enforced specialist responder verified by an independent judge model to prevent self-grading bias and unsupported claims.",
       "Resume-safe, append-with-flush CSV pipeline with per-row audit trace JSON; two dry-run passes produce byte-identical output.",
     ],
-    techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen3 30B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
+    // Model names per the repo's own ARCHITECTURE.md — this previously read
+    // "Qwen3 30B", which the docs do not support.
+    techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen2.5 72B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
     improvements: "Async per-row concurrency for larger ticket volumes; FAISS-backed retrieval if the corpus grows past ~50k chunks.",
     achievements: [
+      "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus — 15 answered with inline citations, 14 escalated, 2 rejected by the verifier.",
       "Built and shipped end-to-end in 24 hours for a live hackathon judge interview.",
-      "Verified byte-identical, deterministic output across repeated dry runs.",
+      "Verified byte-identical, deterministic output across repeated dry runs — asserted as a regression test, not just observed.",
     ],
   },
   {

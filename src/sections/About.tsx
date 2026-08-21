@@ -1,16 +1,25 @@
 import { Section } from "../components/Section"
 import { motion, useReducedMotion } from "framer-motion"
 
+/**
+ * Register target: his spoken voice, not his written one. He uses contractions
+ * constantly when talking and almost never when writing formally, and his own
+ * bullet rule is "what you did -> how you did -> what is the result". Mechanism
+ * before metric throughout — the one time a senior engineer read a bare
+ * percentage of his aloud, the reaction was "that doesn't mean a whole lot to me".
+ */
 const aboutCopy = `
-I started at Infosys building a Knowledge Graph platform for enterprise financial and insurance clients. On a team that moved fast and owned outcomes, I shipped features end-to-end, from Angular UI work to re-architecting Neo4j/Cypher queries that cut search response time from 200ms to 30ms per keystroke.
+I've always considered myself a problem solver. I like breaking down complex systems and building things that work in the real world. That's most of what I did for over two years at Infosys, on a knowledge graph platform for Fortune 500 financial services clients.
 
-That experience shaped how I write software. The best code is not just clever; it is scalable, maintainable, and built with the end-user in mind. One habit I carried forward is clean lower-level design: I used adapter-style boundaries to decouple tightly coupled modules so we could swap implementations without rewriting the system, and keep changes local and testable.
+The work I'd point to first is the search layer. We integrated LLMs so the platform could translate natural English questions into Cypher queries, which made complex graph data accessible to non-technical users. NLU accuracy went from 85% to 92%. I'd also built a GraphQL to Cypher translation layer for the graph API — and then took it back out of the search path, because profiling showed that extra hop was what was costing us. Search got over 40% faster. Deleting my own abstraction turned out to be the right call.
 
-At the University of Maryland (M.Eng in Software Engineering, GPA 3.93), I worked as a Research Assistant on an AgriTech ML pipeline that processed 10GB+ of heterogeneous data and improved disease prediction accuracy from 74% to 91% using AWS (S3, SageMaker, Lambda/API Gateway). Mentorship is a real part of how I work. As a Graduate Teaching Assistant for Object-Oriented Programming and as a mentor across multiple semesters, I have helped 500+ students build strong fundamentals through structured problem solving, design principles, and thoughtful feedback.
+That shaped how I write software. Clean boundaries matter more than clever code. I put an adapter boundary around the graph visualization module so the rendering implementation could be swapped without touching a single caller. I also spent a long stretch inside NGINX's rewrite module, which offers no real way to trace what it's doing — you're guessing until you go read the source. That taught me more about diagnosis than any tutorial has.
 
-Today I focus on AI infrastructure and backend systems, especially retrieval pipelines and stateful orchestration with LangGraph. I also built a RAG system designed to handle 10,000+ PDFs and large document libraries while keeping retrieval reliable and latency predictable.
+At Maryland I finished an M.Eng in Software Engineering with a 3.93 GPA and worked as a research assistant on an AgriTech ML pipeline: 10GB+ of heterogeneous data, disease prediction accuracy from 74% to 91%. The part I'm actually proud of isn't the number. I took the regression result to a plant scientist and asked whether the four-hour humidity window was biologically real or whether I'd just found a pattern in noise. It was real. I also graded object-oriented programming for 50+ students a semester across three semesters, and mentored 160 students in data structures before that.
 
-Outside of the terminal, I live by a simple rule: stay active and stay curious. I lift and maintain a consistent routine. I also enjoy cooking for people. It is a simple way for me to step away from the screen and spend some quality time with the people around me
+These days I work on backend systems and applied AI retrieval. The most recent one is a support triage agent: BM25 and dense embeddings fused with reciprocal rank fusion, LLM reranking, and a verifier stage that rejects answers the retrieved evidence doesn't actually support. It runs deterministically — byte-identical output across rebuilds — and falls back to rules-only when no model is available, because I wrote most of it without an API key. One thing I've come to believe: you can usually get away with a predefined workflow instead of a full agent, and that saves you from chasing shiny objects.
+
+Outside the terminal I lift, keep a consistent routine, and cook for people. It's a simple way to step away from the screen and spend real time with the people around me.
 `.trim()
 
 type HighlightCard = {
@@ -21,11 +30,11 @@ type HighlightCard = {
 const highlights: HighlightCard[] = [
   {
     title: "Academic & Mentorship",
-    body: "3.93/4.0 GPA at UMD. Mentored 500+ students in OOP and Data Structures.",
+    body: "3.93/4.0 GPA at UMD. Mentored 160 students in data structures, and graded object-oriented programming for 50+ students a semester.",
   },
   {
     title: "Industry Impact",
-    body: "Cut enterprise search response time from 200ms to 30ms per keystroke. Recipient of the “Tower of the Team” award at Infosys.",
+    body: "Cut search-suggestion latency from ~200ms to ~30ms per keystroke and API payload by 68%. Recipient of the “Tower of the Team” award at Infosys.",
   },
   {
     title: "Algorithmic Edge",
@@ -60,7 +69,7 @@ export function About({ variant = "linen" }: AboutProps) {
           viewport={{ once: true, amount: "some" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          Passionate about technology and innovation
+          I&rsquo;ve always considered myself a problem solver
         </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">

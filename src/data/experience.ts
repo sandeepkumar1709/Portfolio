@@ -45,27 +45,48 @@ export const experience: ExperienceEntry[] = [
     highlights: [
       "Built full-stack AgriTech app predicting Brown Patch disease severity; ETL for 10GB+ data (TesseractOCR, BeautifulSoup, NOAA APIs → S3).",
       "Improved model accuracy from 74% to 91% via Köppen climate segmentation and feature engineering; deployed serverless inference (Lambda, API Gateway).",
+      "Ran stepwise regression to isolate which weather signals actually predicted outbreaks, then took the result to a plant scientist who confirmed the four-hour humidity window and leaf-wetness duration were biologically real rather than statistical artifacts.",
     ],
     stack: "Python, SQL, AWS (S3, Lambda, API Gateway, SageMaker, EC2), TensorFlow, Scikit-learn",
   },
   {
+    role: "Graduate Aide — Object-Oriented Programming",
+    organization: "University of Maryland, College of Information",
+    /**
+     * Two separate appointments, not one continuous span — LinkedIn renders
+     * them as two positions, so a merged "Aug 2024 – Dec 2025" would read as
+     * a parity mismatch to anyone comparing the two.
+     */
+    period: "Aug 2024 – May 2025 · Aug 2025 – Dec 2025",
+    location: "College Park, MD",
+    highlights: [
+      "Graded Object-Oriented Programming coursework and wrote design feedback for 50+ students a semester across three semesters.",
+      "Traced a failing autograder to the test harness rather than the submitted code by reproducing the submission locally, unblocking grading for the affected cohort.",
+    ],
+  },
+  {
     role: "Software Engineer",
     organization: "Infosys",
-    period: "May 2021 – Dec 2023",
+    /**
+     * Aug, not May. May 2021 collides with two other endings — his Bachelor's
+     * and the Smart Interviews role both close that month — and the title line
+     * in his own notes reads "Aug 2021 – Dec 2023". ~2 yr 5 mo, so never "3+".
+     */
+    period: "Aug 2021 – Dec 2023",
     location: "Hyderabad, India",
     highlights: [
-      "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform in financial/insurance domains.",
-      "Engineered Python translation layer (GraphQL → Neo4j Cypher); reduced graph query response times by over 40%.",
-      "Optimized graph serialization and cut API payload by 68% (465KB → 148KB).",
-      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences; decoupled Graph Visualization module (Adapter pattern).",
-      "Diagnosed a latency bottleneck in the search suggestion API and re-architected the Cypher query and serialization layer with optimized queries and Protobuf, cutting response time from 200ms to 30ms per keystroke.",
-      "Designed GNN microservice for link prediction across multi-hop entity traversals in insurance/financial datasets.",
-      "Integrated LLMs into search layer; boosted NLU query accuracy from 85% to 92%.",
-      "Led team of three to automate regression testing.",
-      "Attained a 15% increase in Monthly Active Users (MAU) as measured by session tracking for assistive technology users, by engineering and launching a full-scale UI remediation that enhanced overall product accessibility.",
+      "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform serving Fortune 500 financial services clients.",
+      "Integrated LLMs into the search layer to translate natural English questions into Cypher queries, making complex graph data accessible to non-technical users; lifted NLU query accuracy from 85% to 92%.",
+      "Built a Python GraphQL → Cypher translation layer for the graph API, then took it out of the search path once profiling showed the extra hop dominated — cutting search service response time by over 40%.",
+      "Diagnosed a latency bottleneck in the search-suggestion API and re-architected the Cypher query and serialization layer, cutting response time from ~200ms to ~30ms per keystroke under profiling.",
+      "Reshaped graph serialization into a minimal response payload, cutting API payload 68% (465KB → 148KB).",
+      "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
+      "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",
+      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences and decoupled the graph visualization module behind an adapter boundary, so the rendering implementation could be swapped without touching callers.",
+      "Led a team of three to automate regression testing, eliminating 20 hours of manual QA effort per release.",
     ],
     stack:
-      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, Cypher, GraphQL, Spring Boot, PyTorch, LLMs, NGINX, Docker, Kubernetes, Rancher, WCAG 2.1 compliance"
+      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, JanusGraph, Cypher, GraphQL, Spring Boot, PyTorch, Rasa, Protobuf, NGINX, Docker, Kubernetes, Rancher"
   },
   {
     role: "Software Developer & Instructor",

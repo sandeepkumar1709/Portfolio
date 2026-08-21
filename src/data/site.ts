@@ -1,7 +1,13 @@
 export const site = {
   name: "Sandeep Poloju",
-  /** Single source of truth for the positioning line. Rendered by Hero. */
-  role: "Backend-focused Full-stack Engineer & AI Infrastructure Architect",
+  /**
+   * Single source of truth for the positioning line. Rendered by Hero.
+   * "scalable AI systems" is his own phrasing. The previous line claimed
+   * "AI Infrastructure Architect" — a title that appears nowhere in any
+   * source he wrote, so it could not survive an interview follow-up.
+   * Keep index.html's title/og/twitter/JSON-LD in sync with this.
+   */
+  role: "Software Engineer — backend & scalable AI systems",
   /**
    * Recruiters filter on these before they filter on skills, and the resume
    * PDF already states "Open to Relocation". Fill both in and they render as
