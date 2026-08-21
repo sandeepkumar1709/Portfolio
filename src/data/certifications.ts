@@ -36,7 +36,7 @@ export const certifications: Certification[] = [
     credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b/",
   },
   {
-    name: "IBM watsonx Chatbot Challenge — Runner-up (95 teams)",
+    name: "IBM watsonx Chatbot Challenge: Runner-up (95 teams)",
     issuer: "IBM",
     type: "award",
     issued: "Oct 2023",
@@ -73,7 +73,7 @@ export const achievements: Achievement[] = [
   {
     title: "Publication",
     detail:
-      "“Analyzing Event Hype and Reality on Twitter” — co-author (2nd of 4), IJRAR Vol 10 Issue 3, July 2023.",
+      "“Analyzing Event Hype and Reality on Twitter”, co-author (2nd of 4), IJRAR Vol 10 Issue 3, July 2023.",
     href: "https://www.ijrar.org/papers/IJRAR23C1279.pdf",
   },
   {

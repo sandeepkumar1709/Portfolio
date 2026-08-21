@@ -72,7 +72,7 @@ export function Navbar() {
             }
             setMobileOpen(false)
           }}
-          aria-label="Sandeep Poloju — back to top"
+          aria-label="Sandeep Poloju, back to top"
           className={`${TAP_TARGET} -ml-2 inline-flex items-center justify-center px-2 font-serif text-base font-bold tracking-tight text-graphite rounded-full ${FOCUS_RING}`}
         >
           SP

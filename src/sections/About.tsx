@@ -5,21 +5,26 @@ import { motion, useReducedMotion } from "framer-motion"
  * Register target: his spoken voice, not his written one. He uses contractions
  * constantly when talking and almost never when writing formally, and his own
  * bullet rule is "what you did -> how you did -> what is the result". Mechanism
- * before metric throughout — the one time a senior engineer read a bare
+ * before metric throughout: the one time a senior engineer read a bare
  * percentage of his aloud, the reaction was "that doesn't mean a whole lot to me".
+ *
+ * No em dashes anywhere in this copy, by his instruction. Use commas, colons,
+ * semicolons or a full stop instead.
  */
 const aboutCopy = `
-I've always considered myself a problem solver. I like breaking down complex systems and building things that work in the real world. That's most of what I did for over two years at Infosys, on a knowledge graph platform for Fortune 500 financial services clients.
+I've always considered myself a problem solver. I like breaking down complex systems and building things that work in the real world.
 
-The work I'd point to first is the search layer. We integrated LLMs so the platform could translate natural English questions into Cypher queries, which made complex graph data accessible to non-technical users. NLU accuracy went from 85% to 92%. I'd also built a GraphQL to Cypher translation layer for the graph API — and then took it back out of the search path, because profiling showed that extra hop was what was costing us. Search got over 40% faster. Deleting my own abstraction turned out to be the right call.
+Right now that means Acculevel, where most of what I build either carries money or gets audited. The main system is a review-attribution service on Azure that replaced a low-code workflow nobody could test, and which decided salesperson commissions. It closes the whole loop on its own: appointment, QR code, customer scan, Google review, advisor credit, with nobody in the middle. The part I'd actually talk about is choosing what to match on. Avatar image IDs looked like the obvious key until I measured them and found they were split across two Google namespaces, where display names were present on all 5,503 real reviews. An avatar-first matcher would have missed 2,053 of them and failed the first real payout on day one. That is the kind of thing measurement tells you and intuition does not.
 
-That shaped how I write software. Clean boundaries matter more than clever code. I put an adapter boundary around the graph visualization module so the rendering implementation could be swapped without touching a single caller. I also spent a long stretch inside NGINX's rewrite module, which offers no real way to trace what it's doing — you're guessing until you go read the source. That taught me more about diagnosis than any tutorial has.
+Before that I spent over two years at Infosys on a knowledge graph platform for Fortune 500 financial services clients. The work I'd point to first is the search layer. We integrated LLMs so the platform could translate natural English questions into Cypher queries, which made complex graph data accessible to non-technical users, and NLU accuracy went from 85% to 92%. The service itself was slow and barely documented, so I read the codebase and talked to whoever had touched it. The bottleneck was an intermediate step translating GraphQL into Cypher before anything reached Neo4j. I generated Cypher straight from the search service instead and skipped that hop, which took over 40% off the response time.
 
-At Maryland I finished an M.Eng in Software Engineering with a 3.93 GPA and worked as a research assistant on an AgriTech ML pipeline: 10GB+ of heterogeneous data, disease prediction accuracy from 74% to 91%. The part I'm actually proud of isn't the number. I took the regression result to a plant scientist and asked whether the four-hour humidity window was biologically real or whether I'd just found a pattern in noise. It was real. I also graded object-oriented programming for 50+ students a semester across three semesters, and mentored 160 students in data structures before that.
+That shaped how I write software. Clean boundaries matter more than clever code, so I put an adapter boundary around the graph visualization module and the rendering implementation could then be swapped without touching a single caller. I also spent a long stretch inside NGINX's rewrite module, which gives you no real way to trace what it is doing. You are guessing until you go and read the source. That taught me more about diagnosis than any tutorial has.
 
-These days I work on backend systems and applied AI retrieval. The most recent one is a support triage agent: BM25 and dense embeddings fused with reciprocal rank fusion, LLM reranking, and a verifier stage that rejects answers the retrieved evidence doesn't actually support. It runs deterministically — byte-identical output across rebuilds — and falls back to rules-only when no model is available, because I wrote most of it without an API key. One thing I've come to believe: you can usually get away with a predefined workflow instead of a full agent, and that saves you from chasing shiny objects.
+At Maryland I finished an M.Eng in Software Engineering with a 3.93 GPA and worked as a research assistant on a plant disease prediction model. We had dozens of possible climate features and were picking them by trial and error, which was slow and had stalled the model's accuracy. I implemented stepwise regression in Python to select them statistically instead, then sat down with the plant scientist on our team to check the output against real biology. The features the algorithm kept, a four-hour humidity window and leaf wetness duration, were the ones that genuinely drive outbreaks. Accuracy improved by 17 percentage points. I also graded object-oriented programming for 50+ students a semester across three semesters, and mentored 160 students in data structures before that.
 
-Outside the terminal I lift, keep a consistent routine, and cook for people. It's a simple way to step away from the screen and spend real time with the people around me.
+Outside of work I build retrieval systems. The most recent is a support triage agent: BM25 and dense embeddings fused with reciprocal rank fusion, an LLM rerank pass, and a verifier stage that rejects answers the retrieved evidence doesn't actually support. It runs deterministically, producing byte-identical output across rebuilds, and falls back to rules-only when no model is available, because I wrote most of it without an API key. One thing I've come to believe: you can usually get away with a predefined workflow instead of a full agent, and that saves you from chasing shiny objects.
+
+Away from the terminal I lift, keep a consistent routine, and cook for people. It's a simple way to step away from the screen and spend real time with the people around me.
 `.trim()
 
 type HighlightCard = {
@@ -53,7 +58,7 @@ export function About({ variant = "linen" }: AboutProps) {
     <Section id="about" variant={variant}>
       <div className="w-full">
         <motion.p
-          className="text-graphite/80 text-eyebrow font-medium uppercase mb-2 text-center md:text-left"
+          className="text-graphite/80 text-eyebrow font-medium uppercase mb-2"
           initial={reducedMotion ? false : { opacity: 0, y: 10 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: "some" }}
@@ -63,7 +68,7 @@ export function About({ variant = "linen" }: AboutProps) {
         </motion.p>
         <motion.h2
           id="about-heading"
-          className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-8 text-center md:text-left"
+          className="text-2xl md:text-4xl font-bold font-serif tracking-tight text-graphite mb-8 text-balance max-w-[34ch]"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: "some" }}
@@ -72,8 +77,12 @@ export function About({ variant = "linen" }: AboutProps) {
           I&rsquo;ve always considered myself a problem solver
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">
-          <div className="space-y-6">
+        {/* Cards sit above the prose (order-first) rather than in a side
+            column. The copy is long enough now that a 0.85fr sidebar left a
+            tall band of dead space beside it, and the two columns disagreed
+            about where the eye should start. */}
+        <div className="flex flex-col gap-10 lg:gap-12">
+          <div className="space-y-6 max-w-[68ch]">
             {aboutCopy.split("\n\n").map((para) => (
               <motion.p
                 key={para.slice(0, 24)}
@@ -88,7 +97,7 @@ export function About({ variant = "linen" }: AboutProps) {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-5">
+          <div className="order-first grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {highlights.map((card, idx) => (
               <motion.div
                 key={card.title}

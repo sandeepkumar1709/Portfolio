@@ -11,7 +11,7 @@ export default function ProjectDetail() {
   // Per-route title and description. Without this every project page shared
   // the home page's title in search results and browser history.
   useDocumentMeta(
-    project ? `${project.name} — Sandeep Poloju` : "Project not found | Sandeep Poloju",
+    project ? `${project.name} | Sandeep Poloju` : "Project not found | Sandeep Poloju",
     project?.oneLiner
   )
 

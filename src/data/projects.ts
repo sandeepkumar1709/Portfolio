@@ -38,9 +38,9 @@ export const projects: ProjectDetail[] = [
     techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen2.5 72B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
     improvements: "Async per-row concurrency for larger ticket volumes; FAISS-backed retrieval if the corpus grows past ~50k chunks.",
     achievements: [
-      "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus — 15 answered with inline citations, 14 escalated, 2 rejected by the verifier.",
+      "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus: 15 answered with inline citations, 14 escalated, 2 rejected by the verifier.",
       "Built and shipped end-to-end in 24 hours for a live hackathon judge interview.",
-      "Verified byte-identical, deterministic output across repeated dry runs — asserted as a regression test, not just observed.",
+      "Verified byte-identical, deterministic output across repeated dry runs, asserted as a regression test rather than just observed.",
     ],
   },
   {

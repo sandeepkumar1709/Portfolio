@@ -7,7 +7,7 @@ export const site = {
    * source he wrote, so it could not survive an interview follow-up.
    * Keep index.html's title/og/twitter/JSON-LD in sync with this.
    */
-  role: "Software Engineer — backend & scalable AI systems",
+  role: "Software Engineer, backend & scalable AI systems",
   /**
    * Recruiters filter on these before they filter on skills, and the resume
    * PDF already states "Open to Relocation". Fill both in and they render as
