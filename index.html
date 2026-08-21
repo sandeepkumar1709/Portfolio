@@ -14,12 +14,13 @@
       content="Backend-focused full-stack engineer working on AI infrastructure. Neo4j knowledge graphs, RAG pipelines, and LangGraph orchestration. UMD M.Eng, 3.93 GPA."
     />
 
+    <link rel="canonical" href="https://sandeep-poloju.vercel.app/" />
+
     <!-- ==================== SHARE PREVIEW ====================
-         The text tags below work today. To get the image card on
-         LinkedIn / Slack / WhatsApp / X, do two things:
-           1. Add a 1200x630 PNG at  public/og-image.png
-           2. Uncomment the four tags marked NEEDS DOMAIN and replace
-              REPLACE-ME.example with your production origin.
+         og:image is the one remaining gap: add a 1200x630 PNG at
+         public/og-image.png and uncomment the three tags below. Without it
+         LinkedIn and Slack render a text-only card; WhatsApp and X render
+         nothing at all.
          Validate at linkedin.com/post-inspector BEFORE sharing the link
          anywhere — LinkedIn caches the first scrape for about a week, and a
          card already rendered into a published post cannot be repaired. -->
@@ -31,10 +32,10 @@
       property="og:description"
       content="Backend-focused full-stack engineer working on AI infrastructure. Neo4j knowledge graphs, RAG pipelines, and LangGraph orchestration. UMD M.Eng, 3.93 GPA."
     />
-    <!-- NEEDS DOMAIN <meta property="og:url" content="https://REPLACE-ME.example/" /> -->
-    <!-- NEEDS DOMAIN <meta property="og:image" content="https://REPLACE-ME.example/og-image.png" /> -->
-    <!-- NEEDS DOMAIN <meta property="og:image:width" content="1200" /> -->
-    <!-- NEEDS DOMAIN <meta property="og:image:height" content="630" /> -->
+    <meta property="og:url" content="https://sandeep-poloju.vercel.app/" />
+    <!-- NEEDS og-image.png <meta property="og:image" content="https://sandeep-poloju.vercel.app/og-image.png" /> -->
+    <!-- NEEDS og-image.png <meta property="og:image:width" content="1200" /> -->
+    <!-- NEEDS og-image.png <meta property="og:image:height" content="630" /> -->
     <meta
       property="og:image:alt"
       content="Sandeep Poloju, Backend-focused Full-stack Engineer and AI Infrastructure Architect"
@@ -46,7 +47,7 @@
       name="twitter:description"
       content="Backend-focused full-stack engineer working on AI infrastructure. Neo4j knowledge graphs, RAG pipelines, and LangGraph orchestration. UMD M.Eng, 3.93 GPA."
     />
-    <!-- NEEDS DOMAIN <meta name="twitter:image" content="https://REPLACE-ME.example/og-image.png" /> -->
+    <!-- NEEDS og-image.png <meta name="twitter:image" content="https://sandeep-poloju.vercel.app/og-image.png" /> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,14 +56,16 @@
       rel="stylesheet"
     />
 
-    <!-- Every fact below is sourced from src/data/. Add "url" and "image"
-         once the production domain is set. -->
+    <!-- Every fact below is sourced from src/data/ or the resume PDF. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Sandeep Poloju",
         "jobTitle": "Backend-focused Full-stack Engineer & AI Infrastructure Architect",
+        "url": "https://sandeep-poloju.vercel.app/",
+        "image": "https://sandeep-poloju.vercel.app/images/profile.jpg",
+        "worksFor": { "@type": "Organization", "name": "Acculevel" },
         "sameAs": [
           "https://www.linkedin.com/in/sandeep-poloju",
           "https://github.com/sandeepkumar1709"

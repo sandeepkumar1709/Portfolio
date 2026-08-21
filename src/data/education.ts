@@ -10,7 +10,7 @@ export const education: EducationEntry[] = [
   {
     degree: "Master of Engineering, Software Engineering",
     school: "University of Maryland, College Park",
-    period: "2024 – 2025",
+    period: "Jan 2024 – Dec 2025",
     gpa: "GPA: 3.93 / 4.00",
     courses: [
       "Software Engineering",

@@ -2,7 +2,7 @@ import { Section } from "../components/Section"
 import { motion, useReducedMotion } from "framer-motion"
 
 const aboutCopy = `
-I started at Infosys building a Knowledge Graph platform for enterprise financial and insurance clients. On a team that moved fast and owned outcomes, I shipped features end-to-end, from Angular UI work to re-architecting Neo4j/Cypher queries that reduced search latency by ~90%.
+I started at Infosys building a Knowledge Graph platform for enterprise financial and insurance clients. On a team that moved fast and owned outcomes, I shipped features end-to-end, from Angular UI work to re-architecting Neo4j/Cypher queries that cut search response time from 200ms to 30ms per keystroke.
 
 That experience shaped how I write software. The best code is not just clever; it is scalable, maintainable, and built with the end-user in mind. One habit I carried forward is clean lower-level design: I used adapter-style boundaries to decouple tightly coupled modules so we could swap implementations without rewriting the system, and keep changes local and testable.
 
@@ -25,7 +25,7 @@ const highlights: HighlightCard[] = [
   },
   {
     title: "Industry Impact",
-    body: "10X latency reduction for enterprise search. Recipient of the “Tower of the Team” award at Infosys.",
+    body: "Cut enterprise search response time from 200ms to 30ms per keystroke. Recipient of the “Tower of the Team” award at Infosys.",
   },
   {
     title: "Algorithmic Edge",

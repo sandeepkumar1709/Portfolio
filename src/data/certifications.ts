@@ -36,9 +36,9 @@ export const certifications: Certification[] = [
     credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b/",
   },
   {
-    name: "IBM watsonx Challenge",
+    name: "IBM watsonx Chatbot Challenge — Runner-up (95 teams)",
     issuer: "IBM",
-    type: "certification",
+    type: "award",
     issued: "Oct 2023",
     skills: ["Chatbot Development"],
     credentialUrl: "https://github.com/sandeepkumar1709/watsonX",
@@ -71,9 +71,20 @@ export const certifications: Certification[] = [
 
 export const achievements: Achievement[] = [
   {
+    title: "Publication",
+    detail:
+      "“Analyzing Twitter Event Hype vs. Reality” — NLP sentiment analysis, IJRAR.",
+    href: "https://www.ijrar.org/papers/IJRAR23C1279.pdf",
+  },
+  {
     title: "HackWithInfy",
-    detail: "Top 100 (0.06%) among 167k+ participants.",
+    detail: "Top 100 (0.06%) among 167,000+ participants.",
     href: "https://drive.google.com/file/d/1UhveLciLayXD_lvvUPTM9ckJG-fDFMlu/view?usp=sharing",
+  },
+  {
+    title: "Competitive programming",
+    detail:
+      "600+ advanced algorithmic problems solved. Highest rating: CodeChef 1799, Codeforces 1370.",
   },
   {
     title: "LeetCode daily consistency",
