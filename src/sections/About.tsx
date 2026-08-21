@@ -14,13 +14,13 @@ import { motion, useReducedMotion } from "framer-motion"
 const aboutCopy = `
 I've always considered myself a problem solver. I like breaking down complex systems and building things that work in the real world.
 
-Right now I'm at Acculevel, and this is the stage of my career I'm enjoying most. It's complete engineering: data pipelines, automation tools, full-stack applications, AI automations. Most of it starts the same way, by sitting with a business requirement until I actually understand it, then turning it into software that takes manual work off someone's plate. That translation is the part I like.
+Right now I'm at Acculevel, and this is the stage of my career I'm enjoying most. It's complete engineering: data pipelines, automation tools, full-stack applications, AI automations. Most of it starts the same way, by sitting with a business requirement until I actually understand it, then turning it into software that takes manual work off someone's plate. That translation is the part I like. It ranges from a review-attribution service that decides commissions, to an MCP server that lets people query our profile and search data directly, to a daily pipeline that screens job-site photos before they get published. A fair amount is unglamorous infrastructure work, and I've come to like that too: the outage you diagnose by first ruling out your own change from the day before.
 
-Before that I spent close to three years at Infosys on a knowledge graph platform for Fortune 500 financial services clients. The work I'd point to first is the search layer, where we integrated LLMs so the platform could translate natural English questions into Cypher queries. That made complex graph data usable by people who don't write queries. The service itself was slow and barely documented, so I read the codebase and talked to whoever had touched it, and the bottleneck turned out to be an intermediate step translating GraphQL into Cypher before anything reached Neo4j. I generated Cypher straight from the search service instead and skipped that hop.
+Before that I spent close to three years at Infosys on a knowledge graph platform for a Fortune 500 financial services client. We integrated LLMs so it could translate natural English questions into Cypher queries, which made complex graph data usable by people who don't write queries, and lifted NLU accuracy from 85% to 92%.
 
-Clean boundaries matter more to me than clever code. I put an adapter boundary around the graph visualization module so the rendering implementation could be swapped without touching a single caller. I also spent a long stretch inside NGINX's rewrite module, which gives you no real way to trace what it is doing, so you are guessing until you go and read the source. That taught me more about diagnosis than any tutorial has.
+Clean boundaries matter more to me than clever code. On that platform our graph visualization dependency turned out to be abandoned upstream, so I escalated it as business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the components that talked to it. I also spent a long stretch inside NGINX's rewrite module, which is basically a black box with no debugger, so you're guessing until you sit down with the docs. That taught me more about diagnosis than any tutorial has.
 
-At Maryland I finished an M.Eng in Software Engineering with a 3.93 GPA and worked as a research assistant on a plant disease prediction model. Feature selection was manual trial and error and the accuracy had stalled, so I implemented stepwise regression to choose features statistically, then checked the result with the plant scientist on our team. I also graded object-oriented programming for 50+ students a semester, and mentored 160 students in data structures before that.
+At Maryland I finished an M.Eng in Software Engineering with a 3.93 GPA and worked as a research assistant on a plant disease prediction model. Feature selection was manual trial and error and the accuracy had stalled, so I implemented stepwise regression to choose features statistically and checked the result with the plant scientist on our team. Accuracy improved by 17 percentage points.
 
 Away from the terminal I lift, keep a consistent routine, and cook for people. It's a simple way to step away from the screen and spend real time with the people around me.
 `.trim()
@@ -32,16 +32,16 @@ type HighlightCard = {
 
 const highlights: HighlightCard[] = [
   {
-    title: "Academic & Mentorship",
-    body: "3.93/4.0 GPA at UMD. Mentored 160 students in data structures, and graded object-oriented programming for 50+ students a semester.",
+    title: "Now, at Acculevel",
+    body: "Data pipelines, automation and full-stack services on Azure and Databricks. Replaced an untestable workflow that decided commissions, and cut 25 hours a week of manual publishing.",
   },
   {
-    title: "Industry Impact",
-    body: "Cut search-suggestion latency from ~200ms to ~30ms per keystroke and API payload by 68%. Recipient of the “Tower of the Team” award at Infosys.",
+    title: "Engineering impact",
+    body: "At Infosys: cut API payload 68% (465KB to 148KB) and search-suggestion latency to ~30ms per keystroke. Recipient of the “Tower of the Team” award.",
   },
   {
-    title: "Algorithmic Edge",
-    body: "Top 100 (0.06%) in HackWithInfy (167k+ participants). 600+ problems solved across platforms with a 52-day LeetCode streak.",
+    title: "Academic & mentorship",
+    body: "3.93/4.0 GPA at UMD. Mentored 160 students in data structures, and graded object-oriented programming for 50+ students a semester across three semesters.",
   },
 ]
 
@@ -72,7 +72,7 @@ export function About({ variant = "linen" }: AboutProps) {
           viewport={{ once: true, amount: "some" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          I&rsquo;ve always considered myself a problem solver
+          Turning business requirements into software that removes manual work
         </motion.h2>
 
         {/* Cards sit above the prose (order-first) rather than in a side

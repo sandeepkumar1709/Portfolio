@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-const DEFAULT_TITLE = "Sandeep Poloju | Backend & AI Infrastructure Engineer"
+const DEFAULT_TITLE = "Sandeep Poloju | Software Engineer, Backend & AI Systems"
 
 /**
  * Per-route title and meta description.

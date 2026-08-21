@@ -73,7 +73,7 @@ export function Skills({ variant = "linen" }: SkillsProps) {
         viewport={{ once: true, amount: "some" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        A deliberately chosen toolkit for backend systems, AI infrastructure, and product delivery.
+        A deliberately chosen toolkit for backend systems, applied AI, and product delivery.
       </motion.p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-5">

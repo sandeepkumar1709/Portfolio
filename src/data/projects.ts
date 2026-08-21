@@ -21,7 +21,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "support-triage-agent",
     name: "Support Triage Agent",
-    oneLiner: "Terminal-based AI agent that triages support tickets across HackerRank, Claude, and Visa, grounded entirely in a local help-center corpus with citation-enforced replies. Built solo in 24 hours for the HackerRank Orchestrate hackathon.",
+    oneLiner: "Terminal-based AI agent that triages support tickets against the public help-center documentation of three products (HackerRank, Claude, Visa), grounded entirely in a local corpus with citation-enforced replies. Built solo for the HackerRank Orchestrate hackathon.",
     techTags: ["Python", "Hybrid RAG", "BM25", "BGE Embeddings", "Nebius AI", "LLM-as-judge"],
     href: "https://github.com/sandeepkumar1709/hackerrank-orchestrate-may26",
     contextProblem: "Support tickets across three ecosystems must be classified, answered safely, or escalated, using only a local markdown corpus, with zero hallucinated policy and no live web access at runtime.",
@@ -29,18 +29,18 @@ export const projects: ProjectDetail[] = [
     architecture: "CSV row → triage (rules + LLM) → hybrid retrieval (BM25 + BGE-small embeddings + reciprocal rank fusion + LLM rerank) → deterministic 14-trigger safety gate → grounded reply with inline [#N] citations or templated escalation → independent verifier (different model family) → schema-validated row → output CSV.",
     contributions: [
       "Hybrid BM25 + dense-embedding retriever with RRF and an LLM rerank pass over ~765 help-center articles.",
-      "Deterministic-first safety gate (14 hard-rule triggers) so risky tickets escalate before any LLM call.",
+      "Deterministic-first safety gate: 7 hard rules and an 8-flag risk sweep run before any model call, with 14 templated escalation paths downstream.",
       "Citation-enforced specialist responder verified by an independent judge model to prevent self-grading bias and unsupported claims.",
-      "Resume-safe, append-with-flush CSV pipeline with per-row audit trace JSON; two dry-run passes produce byte-identical output.",
+      "Restartable append-with-flush CSV pipeline with a per-row audit trace JSON; two dry-run passes produce byte-identical output, verified by diff.",
     ],
     // Model names per the repo's own ARCHITECTURE.md — this previously read
     // "Qwen3 30B", which the docs do not support.
     techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen2.5 72B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
-    improvements: "Async per-row concurrency for larger ticket volumes; FAISS-backed retrieval if the corpus grows past ~50k chunks.",
+    improvements: "The eval harness is the real gap: retrieval quality was never scored against a holdout set, so 'eval before tune' stayed a principle rather than a practice. After that, async per-row concurrency and FAISS-backed retrieval past ~50k chunks.",
     achievements: [
       "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus: 15 answered with inline citations, 14 escalated, 2 rejected by the verifier.",
-      "Built and shipped end-to-end in 24 hours for a live hackathon judge interview.",
-      "Verified byte-identical, deterministic output across repeated dry runs, asserted as a regression test rather than just observed.",
+      "Wrote 100% of the ~5,600 lines across 11 modules, plus both design documents, verified against the repository commit history.",
+      "Verified byte-identical, deterministic output across repeated dry runs, confirmed by diff.",
     ],
   },
   {

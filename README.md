@@ -14,9 +14,12 @@ I try to make software that is fast, understandable, and easy to maintain. I car
 ## What This Portfolio Communicates
 
 This site highlights experience building production systems across:
-- **Knowledge Graph platforms** (Neo4j/Cypher, multi-tenant routing, query optimization)
-- **AI infrastructure** (RAG pipelines, LangGraph orchestration, MCP tool integration)
-- **Full-stack delivery** (React/Angular frontends, Python/Java backend services, cloud deployment)
+- **End-to-end delivery at Acculevel** (data pipelines, automation, full-stack services on Azure and
+  Databricks, and applied AI, taking manual work out of business processes)
+- **Applied AI and retrieval** (RAG pipelines, LangGraph, MCP tool servers, hybrid search with
+  reranking and citation-enforced answers)
+- **Knowledge graph and search infrastructure** (Neo4j/Cypher, multi-tenant routing, query
+  optimization) at Infosys, for a Fortune 500 financial services client
 
 It is tailored to explain the **why** behind engineering decisions, not just list technologies.
 
@@ -24,14 +27,19 @@ It is tailored to explain the **why** behind engineering decisions, not just lis
 
 ## Selected Impact Metrics
 
+Only figures that survive a source check appear here. Anything unmeasured is stated as a mechanism
+instead of a number.
+
 | Area | Outcome |
 | --- | --- |
-| Search latency optimization | **90% reduction (10X faster)** via Cypher query redesign |
+| API payload | Reduced from **465KB to 148KB (68%)** by reshaping graph serialization |
+| Support-ticket triage | **29 tickets in 5:07** against a 765-article, 4,987-chunk corpus; 15 answered with citations, 14 escalated |
+| Determinism | Byte-identical output across repeated rebuilds, confirmed by diff |
+| Search-suggestion latency | **~200ms to ~30ms** per keystroke, by ranking on node degree before applying the search predicate |
 | NLU search quality | Improved from **85% to 92%** with LLM integration |
-| Payload optimization | Reduced API payload from **465KB to 148KB (68% cut)** |
-| ML model performance | Improved prediction accuracy from **74% to 91%** |
-| Data pipeline scale | Built ETL pipeline handling **10GB+** heterogeneous data |
-| Mentorship impact | Supported **500+ students** across teaching/mentoring roles |
+| ML model performance | Accuracy improved by **17 percentage points** via climate-based segmentation |
+| Data pipeline | ETL over **10GB+** of heterogeneous data |
+| Mentorship | **160 students** mentored in data structures; **50+ students a semester** graded across three semesters |
 
 ---
 

@@ -18,7 +18,7 @@ export default function Home() {
 
   useDocumentMeta(
     "Sandeep Poloju | Software Engineer, Backend & AI Systems",
-    "Software engineer building data pipelines, automation, full-stack services and applied AI on Azure and Databricks. Previously Neo4j knowledge graphs and Cypher optimization for Fortune 500 clients. UMD M.Eng, 3.93 GPA."
+    "Software engineer building data pipelines, automation, full-stack services and applied AI on Azure and Databricks, with RAG and LangGraph. Previously Neo4j knowledge graphs and Cypher optimization for a Fortune 500 client. UMD M.Eng, 3.93 GPA."
   )
 
   useEffect(() => {
