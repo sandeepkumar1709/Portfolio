@@ -21,7 +21,13 @@ export const projects: ProjectDetail[] = [
   {
     slug: "support-triage-agent",
     name: "Support Triage Agent",
-    oneLiner: "Terminal-based AI agent that triages support tickets against the public help-center documentation of three products (HackerRank, Claude, Visa), grounded entirely in a local corpus with citation-enforced replies. Built solo for the HackerRank Orchestrate hackathon.",
+    oneLiner: "Terminal-based AI agent that triages support tickets against the public help-center documentation of three products (HackerRank, Claude, Visa), grounded entirely in a local corpus with citation-enforced replies. Built solo in 24 hours for the HackerRank Orchestrate hackathon.",
+    /*
+     * "24 hours" is the event window and is confirmed correct by Sandeep
+     * 2026-08-21. Note PLAN.md in the public repo scopes the work to 10 hours
+     * in three places: that was his own working budget inside the 24-hour
+     * hackathon, not a contradiction. Do not "correct" this to 10.
+     */
     techTags: ["Python", "Hybrid RAG", "BM25", "BGE Embeddings", "Nebius AI", "LLM-as-judge"],
     href: "https://github.com/sandeepkumar1709/hackerrank-orchestrate-may26",
     contextProblem: "Support tickets across three ecosystems must be classified, answered safely, or escalated, using only a local markdown corpus, with zero hallucinated policy and no live web access at runtime.",

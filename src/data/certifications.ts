@@ -36,7 +36,7 @@ export const certifications: Certification[] = [
     credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b/",
   },
   {
-    name: "IBM watsonx Chatbot Challenge: Runner-up",
+    name: "IBM watsonx Chatbot Challenge: Runner-up (95 teams)",
     issuer: "IBM",
     type: "award",
     issued: "Oct 2023",

@@ -42,7 +42,7 @@ export const experience: ExperienceEntry[] = [
        * defend out loud. Do not re-add it in that form. If it ever returns it
        * needs plain language, not the dossier's vocabulary.
        */
-      "Found that firewall rules showing as live in the dashboard were not actually reaching traffic on the main domain, traced it to how that domain's DNS was set up with our host, and confirmed the fix by watching caching start to work.",
+      "Found that firewall rules I had deployed were not reaching traffic on the root domain even though the dashboard showed them live. Our host runs its own CDN behind ours, and stacking the two only works through a CNAME rather than A records, so after switching the records caching started working and the rules were finally in the path.",
       "Showed the hosting ceiling was bot waste rather than growth: bandwidth was maxed out while only half the paid visit allowance was used, and roughly three quarters of visits were non-billable crawler traffic. We were already blocking much of it, but at our own server after we had paid for it, so I moved the same blocking out to the CDN edge where it stops before it costs anything.",
       "Diagnosed a site-wide 504 outage: I had deployed firewall rules the day before, so I ruled my own change out first, then went through 2,694 log events and found the origin had run out of PHP workers because crawlers were hammering pages that cannot be cached. Blocked the scrapers and AI crawlers by source, and kept the search crawlers that bring in leads.",
     ],
