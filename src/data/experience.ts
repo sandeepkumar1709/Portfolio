@@ -50,7 +50,7 @@ export const experience: ExperienceEntry[] = [
     highlights: [
       "Built full-stack AgriTech app predicting Brown Patch disease severity; ETL for 10GB+ data (TesseractOCR, BeautifulSoup, NOAA APIs → S3).",
       "Improved model accuracy from 74% to 91% via Köppen climate segmentation and feature engineering; deployed serverless inference (Lambda, API Gateway).",
-      "Ran stepwise regression to isolate which weather signals actually predicted outbreaks, then took the result to a plant scientist who confirmed the four-hour humidity window and leaf-wetness duration were biologically real rather than statistical artifacts.",
+      "Replaced manual trial-and-error feature selection with stepwise regression in Python, then had a plant scientist on the team confirm the selected features, a four-hour humidity window and leaf wetness duration, were the biologically relevant ones.",
     ],
     stack: "Python, SQL, AWS (S3, Lambda, API Gateway, SageMaker, EC2), TensorFlow, Scikit-learn",
   },
@@ -73,11 +73,12 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer",
     organization: "Infosys",
     /**
-     * Aug, not May. May 2021 collides with two other endings — his Bachelor's
-     * and the Smart Interviews role both close that month — and the title line
-     * in his own notes reads "Aug 2021 – Dec 2023". ~2 yr 5 mo, so never "3+".
+     * May 2021, confirmed directly by Sandeep 2026-08-21. Documents in the
+     * archive lean "Aug 2021", but he states May and his undergrad also ended
+     * that month, so the overlap is real rather than a copy error. Tenure is
+     * ~2 yr 7 mo, which supports "close to three years" but not "3+".
      */
-    period: "Aug 2021 – Dec 2023",
+    period: "May 2021 – Dec 2023",
     location: "Hyderabad, India",
     highlights: [
       "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform serving Fortune 500 financial services clients.",
