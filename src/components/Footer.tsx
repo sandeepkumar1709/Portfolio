@@ -33,9 +33,9 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    // pb-24 keeps the credit line clear of the fixed chat button, which
-    // otherwise lands directly on top of it at the bottom of the page.
-    <footer className="border-t border-black/5 bg-linen px-4 sm:px-6 pt-8 pb-24 sm:pb-8">
+    // The mobile pb-24 existed only to keep the credit line clear of the fixed
+    // chat button. That widget is unmounted, so the padding goes back to normal.
+    <footer className="border-t border-black/5 bg-linen px-4 sm:px-6 py-8">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-graphite/80 order-2 sm:order-1">
           © {year} Sandeep Poloju

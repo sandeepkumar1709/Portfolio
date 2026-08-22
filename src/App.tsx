@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import { Navbar } from "./components/Navbar"
 import { Footer } from "./components/Footer"
-import { ChatWithResume } from "./components/ChatWithResume"
 import { ErrorBoundary } from "./components/ErrorBoundary"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
@@ -36,13 +35,6 @@ export default function App() {
 
         <Navbar />
 
-        <div
-          data-print-hide
-          className="pointer-events-none fixed top-16 right-4 z-40 px-3 py-1.5 rounded-full text-xs font-medium text-graphite bg-linen/95 border border-black/10 shadow-sm"
-        >
-          Work in progress
-        </div>
-
         <div className="flex-1">
           <ErrorBoundary>
             <Suspense fallback={<Fallback />}>
@@ -56,7 +48,6 @@ export default function App() {
         </div>
 
         <Footer />
-        <ChatWithResume />
         <Analytics />
       </div>
     </BrowserRouter>

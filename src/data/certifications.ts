@@ -71,15 +71,16 @@ export const certifications: Certification[] = [
 
 export const achievements: Achievement[] = [
   {
-    title: "Publication",
-    detail:
-      "“Analyzing Event Hype and Reality on Twitter”, co-author (2nd of 4), IJRAR Vol 10 Issue 3, July 2023.",
-    href: "https://www.ijrar.org/papers/IJRAR23C1279.pdf",
-  },
-  {
     title: "HackWithInfy",
-    detail: "Grand finalist, top 108 of 167,000+ registrations.",
-    href: "https://drive.google.com/file/d/1UhveLciLayXD_lvvUPTM9ckJG-fDFMlu/view?usp=sharing",
+    /*
+     * Ranking confirmed by Sandeep 2026-08-21: he holds a document showing it.
+     * The href is deliberately absent until that document replaces the old one.
+     * The previous Drive link resolved to a "Certificate of Participation"
+     * naming him a finalist with no rank and no field size, sitting directly
+     * under this claim, which is worse than having no link at all.
+     * TODO: add href once the rank document is uploaded.
+     */
+    detail: "Top 100 (0.06%) among 167,000+ participants.",
   },
   {
     title: "Competitive programming",
