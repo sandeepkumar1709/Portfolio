@@ -47,6 +47,12 @@ export const projects: ProjectDetail[] = [
     techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen3 30B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
     improvements: "The eval harness is the real gap: retrieval quality was never scored against a holdout set, so 'eval before tune' stayed a principle rather than a practice. After that, async per-row concurrency and FAISS-backed retrieval past ~50k chunks.",
     achievements: [
+      /*
+       * Placement added 2026-08-22, ported from his own LinkedIn project entry,
+       * which carried it while this file did not. It is the only competitive
+       * placement attached to any project here, so it leads.
+       */
+      "Placed 149 of 1,349 entries in the HackerRank Orchestrate hackathon (top ~11%).",
       "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus: 15 answered with inline citations and 14 escalated, 2 of those because the verifier rejected the draft.",
       "Designed and built the full pipeline: ~5,600 lines across 11 modules, plus the architecture and plan documents, with an AI coding assistant.",
       "Verified byte-identical, deterministic output across repeated dry runs, confirmed by diff.",
