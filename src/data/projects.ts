@@ -70,6 +70,30 @@ export const projects: ProjectDetail[] = [
     improvements: "Streaming responses and more document types.",
   },
   {
+    slug: "greboost",
+    name: "GREBoost",
+    oneLiner: "Two-sided GRE prep platform: learners work through material, instructors author and manage it, with permissions separating content ownership from platform administration.",
+    techTags: ["Angular", "TypeScript", "Flask", "MongoDB", "RBAC", "GitHub Actions"],
+    href: "https://github.com/sandeepkumar1709/GREBoost",
+    contextProblem:
+      "A GRE prep platform has two distinct audiences inside one system: learners working through material, and instructors authoring and managing it. That makes access control the real design problem, because content ownership and platform administration cannot be the same privilege.",
+    role: "Sole developer, full-stack.",
+    architecture:
+      "Angular SPA → Flask REST API → MongoDB for content and progress state. Access is gated by three roles, student, instructor and admin, with instructor kept deliberately separate from admin so course authors can publish and manage their own material without platform-wide privileges. Deployed on Vercel with GitHub Actions.",
+    contributions: [
+      "Designed the three-role permission model, keeping instructor distinct from admin rather than collapsing both into a single privileged role.",
+      "Built the Angular front end and the Flask REST layer behind it, with MongoDB holding course content and learner progress.",
+      "Set up the Vercel deployment and the GitHub Actions pipeline.",
+    ],
+    techStack: "Angular, TypeScript, Flask, MongoDB, Vercel, GitHub Actions",
+    /*
+     * improvements is deliberately null. Per the audit this is the highest-signal
+     * field on a project page, and it has to be his own reflection rather than an
+     * invented regret. Ask him what he would change about the role model.
+     */
+    improvements: null,
+  },
+  {
     slug: "medical-scheduling-system",
     name: "Medical Scheduling System",
     oneLiner: "Full-stack healthcare scheduling with a NumPy-based 2D sliding-window algorithm for optimal appointment windows.",
