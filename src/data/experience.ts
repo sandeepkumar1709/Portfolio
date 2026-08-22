@@ -128,6 +128,17 @@ export const experience: ExperienceEntry[] = [
       "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
       "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",
       "Built RESTful APIs (Node.js, PostgreSQL) for user preferences. Found that our graph visualization dependency had been abandoned upstream and escalated it as a business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the key components, cutting bug tickets on that module by 40%.",
+      /*
+       * Accessibility restored 2026-08-22 on his correction: the WCAG work is
+       * real, only the measurements were not. So the claim is stated at the
+       * level of the work and nothing more. Deliberately absent: "standardized",
+       * "Level AA" (a compliance claim an interviewer can audit) and
+       * "resolving 40+ UI barriers" (the disproved metric). Do not re-add those.
+       * The Adapter Design Pattern is also deliberately left out here: that
+       * abstraction was the senior engineer's design, credited in the bullet
+       * below, and naming it twice would blur who did what.
+       */
+      "Refactored a legacy Angular front end and worked through WCAG accessibility issues across the UI.",
       "Led a team of three to automate regression testing, eliminating 20 hours of manual QA effort per release.",
     ],
     stack:
