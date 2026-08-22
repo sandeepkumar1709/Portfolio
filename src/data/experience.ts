@@ -106,15 +106,6 @@ export const experience: ExperienceEntry[] = [
     period: "May 2021 – Dec 2023",
     location: "Hyderabad, India",
     highlights: [
-      "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform serving a Fortune 500 financial services client.",
-      "Integrated LLMs into the search layer to translate natural English questions into Cypher queries, making complex graph data accessible to non-technical users; lifted NLU query accuracy from 85% to 92%.",
-      /*
-       * Corrected 2026-08-21. This previously claimed he built the translation
-       * layer and then removed his own abstraction. His own account says the
-       * queries "were being translated" already: he found an existing hop and
-       * routed around it. He inherited the layer, he did not author it.
-       */
-      "Traced slow AI-search response times through an undocumented codebase to an intermediate step translating GraphQL into Cypher before it reached Neo4j, then generated Cypher directly from the search service to skip that hop.",
       /*
        * CORRECTED 2026-08-22 by Sandeep. The query change and the serialization
        * change were ONE effort, not two, and the 90% is their combined result.
@@ -123,7 +114,16 @@ export const experience: ExperienceEntry[] = [
        * wrong. Protobuf belongs here, and Avro is the rejected alternative he
        * actually tested. Do not split this bullet again.
        */
-      "Traced per-keystroke search latency to a full-database scan, then re-architected the suggestion path end to end: ranked nodes by degree count first and applied the search predicate to that much smaller subset, and moved the Python-to-Angular payload to Protobuf after trying Avro. Benchmarked against the original query at ~200ms to ~20-30ms per keystroke.",
+      "Traced per-keystroke suggestion latency to a full-database scan, then re-ranked the knowledge graph on node degree count so the match predicate ran over a small candidate set, and moved the payload to Protobuf after Avro fell short; benchmarked against the original at ~200ms to ~20-30ms.",
+      "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform serving a Fortune 500 financial services client.",
+      "Integrated LLMs into the search layer to translate natural English questions into Cypher queries, making complex graph data accessible to non-technical users; lifted NLU query accuracy from 85% to 92%.",
+      /*
+       * Corrected 2026-08-21. This previously claimed he built the translation
+       * layer and then removed his own abstraction. His own account says the
+       * queries "were being translated" already: he found an existing hop and
+       * routed around it. He inherited the layer, he did not author it.
+       */
+      "Worked through an undocumented codebase to find the AI search service translating GraphQL into Cypher before anything reached Neo4j, then generated Cypher directly from the service to skip that hop.",
       "Reshaped graph serialization into a minimal response payload, cutting API payload 68% (465KB → 148KB).",
       "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
       "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",

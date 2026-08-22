@@ -38,3 +38,7 @@ reference
 
 # Audit agent roster (local working file)
 rooster.txt
+
+# LinkedIn profile research (local-only working files)
+linkedin-research/
+linkedin-before.md
