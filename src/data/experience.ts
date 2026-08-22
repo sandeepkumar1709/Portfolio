@@ -34,15 +34,13 @@ export const experience: ExperienceEntry[] = [
        */
       "Owned a review-attribution platform from requirements to production as its sole engineer, replacing an untestable low-code workflow that decided salesperson commissions. It runs across 200 Google Business Profiles with no manual step between a customer scanning the QR code and the advisor being credited.",
       /*
-       * RESTORED 2026-08-22: Sandeep confirms 63% -> 99% is a real measured
-       * number. Two notes for whoever reads this next, neither of which
-       * overrides him. (1) The archive's other 63% is a namespace split across
-       * 5,503 reviews, so do not conflate the two. (2) his own
-       * few_finalized_points.md FP:86 cut a "63% to 100% coverage" bullet as a
-       * red-flag metric; that was about coverage, and he has since confirmed
-       * the accuracy figure directly. Keep it.
+       * The 63% -> 99% figure is deliberately absent. It appears only in the
+       * Aug-2026 resume with no antecedent anywhere else, and two nearby 63%
+       * figures in the archive are about key COVERAGE, not accuracy. Sandeep
+       * agreed 2026-08-22 to leave it off rather than publish a number whose
+       * measurement he cannot point to. The mechanism carries the bullet.
        */
-      "Raised review-attribution accuracy from 63% to 99% by adding Google SSO to the existing QR flow, replacing an inference from appointment time and listing with a direct identity match.",
+      "Replaced an inference from appointment time and listing with a direct identity match, by adding Google SSO to the existing QR flow so a review resolves to the advisor who earned it.",
       "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools. It is read-only by construction: the API has no read-only scope, so no write call was ever implemented. Executives pull profile and search performance data without manual exports.",
       "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
       /*
@@ -92,7 +90,7 @@ export const experience: ExperienceEntry[] = [
     period: "Aug 2024 – May 2025 · Aug 2025 – Dec 2025",
     location: "College Park, MD",
     highlights: [
-      "Graded Object-Oriented Programming coursework and wrote design feedback for 50+ students a semester across three semesters.",
+      "Graded and taught Object-Oriented Programming across four sections, roughly 120 students a semester, for three semesters, writing design feedback rather than only marking output.",
       "Traced a failing autograder to the test harness rather than the submitted code by reproducing the submission locally, unblocking grading for the affected cohort.",
     ],
   },
@@ -121,7 +119,7 @@ export const experience: ExperienceEntry[] = [
       "Reshaped graph serialization into a minimal response payload, cutting API payload 68% (465KB → 148KB).",
       "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
       "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",
-      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences. Found that our graph visualization dependency had been abandoned upstream and escalated it as a business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the key components.",
+      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences. Found that our graph visualization dependency had been abandoned upstream and escalated it as a business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the key components, cutting bug tickets on that module by 40%.",
       "Led a team of three to automate regression testing, eliminating 20 hours of manual QA effort per release.",
     ],
     stack:

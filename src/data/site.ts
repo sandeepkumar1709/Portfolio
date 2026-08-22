@@ -15,13 +15,16 @@ export const site = {
    * render as one line under the Hero title; leave them empty and nothing
    * renders, which is the current state.
    */
-  location: "",
-  availability: "",
+  location: "West Lafayette, IN",
+  availability: "Open to relocation",
   resumeUrl: "/Sandeep-Poloju-Resume.pdf",
   contact: {
     email: "sandeep1709.sde@gmail.com",
     linkedIn: "https://www.linkedin.com/in/sandeep-poloju",
     github: "https://github.com/sandeepkumar1709",
-    phone: "+1 (240) 733-9851",
+    // Phone removed 2026-08-22 at his request. It was live in the bundle AND
+    // in git history, and a phone number cannot be rotated. Recruiters reach
+    // out by email or InMail; the number is still in the resume PDF header for
+    // anyone far enough along to call.
   },
 } as const

@@ -41,7 +41,7 @@ const highlights: HighlightCard[] = [
   },
   {
     title: "Academic & mentorship",
-    body: "3.93/4.0 GPA at UMD. Mentored 160 students in data structures, and graded object-oriented programming for 50+ students a semester across three semesters.",
+    body: "3.93/4.0 GPA at UMD. 500+ students supported: 160 mentored in data structures, and roughly 360 across three semesters of object-oriented programming.",
   },
 ]
 

@@ -5,16 +5,19 @@ export interface SkillCategory {
 
 /**
  * Ordered current-stack-first within each group, because array order is render
- * order and first position reads as emphasis. Removed for lack of evidence in
- * any source: Django, gRPC, Shell Scripting, RxJS, Redis. Removed because his
- * own Aug-2026 resume dropped them as "generic frontend breadth": NLP, Flutter,
- * HTML5, SCSS. The governing rule is his: a listed skill is an invitation to be
- * questioned on it.
+ * order and first position reads as emphasis.
+ *
+ * RESTORED 2026-08-22 on his correction: Shell Scripting, RxJS, SCSS, HTML5 and
+ * Flutter are all real. RxJS is the Angular analogue of NgRx, and Flutter backs
+ * the mobile project in Projects. An earlier pass removed them for absence from
+ * the source archive, but absence from his notes is not absence from his skill
+ * set. Still out, and he has not contested: Django (contradicted; every backend
+ * is FastAPI/Flask/Spring Boot), gRPC, Redis.
  */
 export const skills: SkillCategory[] = [
   {
     category: "Languages",
-    items: ["Python", "TypeScript", "SQL", "Java", "JavaScript", "Cypher"],
+    items: ["Python", "TypeScript", "SQL", "Java", "JavaScript", "Cypher", "Shell Scripting"],
   },
   {
     category: "AI/ML",
@@ -22,7 +25,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "Angular", "Tailwind"],
+    items: ["React", "Next.js", "Angular", "RxJS", "Tailwind", "SCSS", "HTML5", "Flutter"],
   },
   {
     /**

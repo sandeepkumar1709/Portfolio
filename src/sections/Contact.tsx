@@ -1,7 +1,7 @@
 import { Section } from "../components/Section"
 import { site } from "../data/site"
 import { motion, useReducedMotion } from "framer-motion"
-import { Mail, Phone, Linkedin, Github } from "lucide-react"
+import { Mail, Linkedin, Github } from "lucide-react"
 import { trackEvent } from "../lib/analytics"
 import { FOCUS_RING } from "../lib/styles"
 
@@ -20,14 +20,6 @@ const contactItems: Array<{
     href: `mailto:${site.contact.email}`,
     icon: Mail,
     bg: "bg-gradient-to-br from-sky-100/70 via-white/40 to-transparent",
-    onSelect: () => trackEvent("phone_click", { placement: "contact_card" }),
-  },
-  {
-    label: "Phone",
-    value: site.contact.phone,
-    href: `tel:${site.contact.phone.replace(/[^\d+]/g, "")}`,
-    icon: Phone,
-    bg: "bg-gradient-to-br from-emerald-100/70 via-white/40 to-transparent",
     onSelect: () => trackEvent("email_click", { placement: "contact_card" }),
   },
   {
@@ -91,7 +83,8 @@ export function Contact({ variant = "linen" }: ContactProps) {
         {invitationCopy}
       </motion.p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Three cards since the phone card was removed; grid-cols-4 left a gap. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {contactItems.map((item, idx) => {
           const Icon = item.icon
           const linkProps = item.external
