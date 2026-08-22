@@ -115,7 +115,15 @@ export const experience: ExperienceEntry[] = [
        * routed around it. He inherited the layer, he did not author it.
        */
       "Traced slow AI-search response times through an undocumented codebase to an intermediate step translating GraphQL into Cypher before it reached Neo4j, then generated Cypher directly from the search service to skip that hop.",
-      "Diagnosed a latency bottleneck in the search-suggestion API and re-architected the per-keystroke Cypher query to rank by node degree first and apply the search predicate to that subset, cutting response time from ~200ms to ~30ms per keystroke.",
+      /*
+       * CORRECTED 2026-08-22 by Sandeep. The query change and the serialization
+       * change were ONE effort, not two, and the 90% is their combined result.
+       * An earlier pass split them because his notes file them as Story 1 and
+       * Story 4, and then removed Protobuf as an unearned keyword. Both were
+       * wrong. Protobuf belongs here, and Avro is the rejected alternative he
+       * actually tested. Do not split this bullet again.
+       */
+      "Traced per-keystroke search latency to a full-database scan, then re-architected the suggestion path end to end: ranked nodes by degree count first and applied the search predicate to that much smaller subset, and moved the Python-to-Angular payload to Protobuf after trying Avro. Benchmarked against the original query at ~200ms to ~20-30ms per keystroke.",
       "Reshaped graph serialization into a minimal response payload, cutting API payload 68% (465KB → 148KB).",
       "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
       "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",
@@ -123,7 +131,7 @@ export const experience: ExperienceEntry[] = [
       "Led a team of three to automate regression testing, eliminating 20 hours of manual QA effort per release.",
     ],
     stack:
-      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, JanusGraph, Cypher, GraphQL, Spring Boot, PyTorch, Rasa, NGINX, Docker, Kubernetes, Rancher"
+      "Angular, TypeScript, Python, Java, Node.js, PostgreSQL, Neo4j, JanusGraph, Cypher, GraphQL, Spring Boot, PyTorch, Rasa, Protobuf, NGINX, Docker, Kubernetes, Rancher"
   },
   {
     role: "Teaching Assistant & Software Developer",
