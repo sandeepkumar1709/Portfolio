@@ -114,7 +114,7 @@ export const experience: ExperienceEntry[] = [
        * wrong. Protobuf belongs here, and Avro is the rejected alternative he
        * actually tested. Do not split this bullet again.
        */
-      "Traced per-keystroke suggestion latency to a full-database scan, then re-ranked the knowledge graph on node degree count so the match predicate ran over a small candidate set, and moved the payload to Protobuf after Avro fell short; benchmarked against the original at ~200ms to ~20-30ms.",
+      "Traced per-keystroke suggestion latency to a full-database scan, then re-ranked the knowledge graph on node degree count so the match predicate ran over a small candidate set, and moved the payload to Protobuf after trying Avro, cutting benchmarked latency from ~200ms to ~20-30ms per keystroke.",
       "Owned features end-to-end across UI and backend services for an enterprise Knowledge Graph platform serving a Fortune 500 financial services client.",
       "Integrated LLMs into the search layer to translate natural English questions into Cypher queries, making complex graph data accessible to non-technical users; lifted NLU query accuracy from 85% to 92%.",
       /*
