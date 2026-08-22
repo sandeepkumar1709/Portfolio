@@ -2,12 +2,21 @@ export const site = {
   name: "Sandeep Poloju",
   /**
    * Single source of truth for the positioning line. Rendered by Hero.
-   * "scalable AI systems" is his own phrasing. The previous line claimed
-   * "AI Infrastructure Architect" — a title that appears nowhere in any
-   * source he wrote, so it could not survive an interview follow-up.
-   * Keep index.html's title/og/twitter/JSON-LD in sync with this.
+   *
+   * His own wording, taken from the resume's pdfsubject and adopted here
+   * 2026-08-22. It replaced "Software Engineer, backend & scalable AI systems",
+   * which was itself a correction of the unsupportable "AI Infrastructure
+   * Architect". Two reasons for the change: it matches how he actually
+   * describes the job ("complete engineering: data pipelines, automation tools,
+   * full-stack applications, AI automations"), and it drops "scalable", which
+   * nothing in the corpus supports since there is no throughput, concurrency or
+   * load figure anywhere in his material.
+   *
+   * Every surface below must carry this string verbatim, EXCEPT the <title>
+   * tags, which are deliberately shortened for the ~60-char SERP budget. That
+   * exception is recorded in index.html; do not "fix" it back.
    */
-  role: "Software Engineer, backend & scalable AI systems",
+  role: "Software Engineer: AI systems, data pipelines and full-stack applications",
   /**
    * Recruiters filter on these before they filter on skills. NOTE: the shipped
    * resume PDF does NOT state "Open to Relocation" or any location, so this is
