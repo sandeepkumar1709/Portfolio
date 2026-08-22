@@ -72,7 +72,7 @@ export function About({ variant = "linen" }: AboutProps) {
           viewport={{ once: true, amount: "some" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          Turning business requirements into software that removes manual work
+          How I work
         </motion.h2>
 
         {/* Cards sit above the prose (order-first) rather than in a side

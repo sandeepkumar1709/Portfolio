@@ -33,7 +33,16 @@ export const experience: ExperienceEntry[] = [
        * origin-lockdown finding is deliberately still open.
        */
       "Owned a review-attribution platform from requirements to production as its sole engineer, replacing an untestable low-code workflow that decided salesperson commissions. It runs across 200 Google Business Profiles with no manual step between a customer scanning the QR code and the advisor being credited.",
-      "Replaced an inference from appointment time and listing with a direct identity match, by adding Google SSO to the existing QR flow so a review resolves to the advisor who earned it.",
+      /*
+       * RESTORED 2026-08-22: Sandeep confirms 63% -> 99% is a real measured
+       * number. Two notes for whoever reads this next, neither of which
+       * overrides him. (1) The archive's other 63% is a namespace split across
+       * 5,503 reviews, so do not conflate the two. (2) his own
+       * few_finalized_points.md FP:86 cut a "63% to 100% coverage" bullet as a
+       * red-flag metric; that was about coverage, and he has since confirmed
+       * the accuracy figure directly. Keep it.
+       */
+      "Raised review-attribution accuracy from 63% to 99% by adding Google SSO to the existing QR flow, replacing an inference from appointment time and listing with a direct identity match.",
       "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools. It is read-only by construction: the API has no read-only scope, so no write call was ever implemented. Executives pull profile and search performance data without manual exports.",
       "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
       /*
