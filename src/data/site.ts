@@ -9,9 +9,11 @@ export const site = {
    */
   role: "Software Engineer, backend & scalable AI systems",
   /**
-   * Recruiters filter on these before they filter on skills, and the resume
-   * PDF already states "Open to Relocation". Fill both in and they render as
-   * one line under the Hero title; leave them empty and nothing renders.
+   * Recruiters filter on these before they filter on skills. NOTE: the shipped
+   * resume PDF does NOT state "Open to Relocation" or any location, so this is
+   * the only place in the funnel that can answer it. Fill both in and they
+   * render as one line under the Hero title; leave them empty and nothing
+   * renders, which is the current state.
    */
   location: "",
   availability: "",

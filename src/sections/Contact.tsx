@@ -20,7 +20,7 @@ const contactItems: Array<{
     href: `mailto:${site.contact.email}`,
     icon: Mail,
     bg: "bg-gradient-to-br from-sky-100/70 via-white/40 to-transparent",
-    onSelect: () => trackEvent("email_click", { placement: "contact_card" }),
+    onSelect: () => trackEvent("phone_click", { placement: "contact_card" }),
   },
   {
     label: "Phone",

@@ -17,7 +17,7 @@ export default function Home() {
   const reducedMotion = useReducedMotion()
 
   useDocumentMeta(
-    "Sandeep Poloju | Software Engineer, Backend & AI Systems",
+    "Sandeep Poloju | Software Engineer, backend & scalable AI systems",
     "Software engineer building data pipelines, automation, full-stack services and applied AI on Azure and Databricks, with RAG and LangGraph. Previously Neo4j knowledge graphs and Cypher optimization for a Fortune 500 client. UMD M.Eng, 3.93 GPA."
   )
 

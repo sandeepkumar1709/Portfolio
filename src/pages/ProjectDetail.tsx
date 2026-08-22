@@ -35,7 +35,7 @@ export default function ProjectDetail() {
         {project.contextProblem && (
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
-              Context / Problem
+              Context and problem
             </h2>
             <p>{project.contextProblem}</p>
           </section>
@@ -71,7 +71,7 @@ export default function ProjectDetail() {
         {project.contributions && project.contributions.length > 0 && (
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-graphite mb-2">
-              Key contributions & metrics
+              Key contributions
             </h2>
             <ul className="list-disc list-inside space-y-1">
               {project.contributions.map((c, i) => (

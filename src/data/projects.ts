@@ -39,13 +39,16 @@ export const projects: ProjectDetail[] = [
       "Citation-enforced specialist responder verified by an independent judge model to prevent self-grading bias and unsupported claims.",
       "Restartable append-with-flush CSV pipeline with a per-row audit trace JSON; two dry-run passes produce byte-identical output, verified by diff.",
     ],
-    // Model names per the repo's own ARCHITECTURE.md — this previously read
-    // "Qwen3 30B", which the docs do not support.
-    techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen2.5 72B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
+    // Qwen3 30B is CORRECT. Verified in code/agents/verifier.py:69
+    // (DEFAULT_MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507"), the repo README and
+    // code/README.md's model table. An earlier pass "corrected" this to
+    // Qwen2.5 72B on the strength of ARCHITECTURE.md's locked-decisions list,
+    // which is a stale planning doc. Do not change it again.
+    techStack: "Python, Nebius AI Studio (Llama 3.3 70B, Qwen3 30B), sentence-transformers (BGE-small), rank-bm25, tiktoken",
     improvements: "The eval harness is the real gap: retrieval quality was never scored against a holdout set, so 'eval before tune' stayed a principle rather than a practice. After that, async per-row concurrency and FAISS-backed retrieval past ~50k chunks.",
     achievements: [
-      "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus: 15 answered with inline citations, 14 escalated, 2 rejected by the verifier.",
-      "Wrote 100% of the ~5,600 lines across 11 modules, plus both design documents, verified against the repository commit history.",
+      "Processed 29 tickets in 5 minutes 7 seconds (10.6 s/row) against a 765-article, 4,987-chunk corpus: 15 answered with inline citations and 14 escalated, 2 of those because the verifier rejected the draft.",
+      "Designed and built the full pipeline: ~5,600 lines across 11 modules, plus the architecture and plan documents, with an AI coding assistant.",
       "Verified byte-identical, deterministic output across repeated dry runs, confirmed by diff.",
     ],
   },
@@ -57,7 +60,7 @@ export const projects: ProjectDetail[] = [
     href: "https://github.com/sandeepkumar1709/student-qa-rag",
     contextProblem: "Students need to ask questions over academic PDFs conversationally, with optional web fallback for off-topic queries.",
     role: "Sole developer.",
-    architecture: "FastAPI → LangGraph (classify → retrieve or web_search → generate); ChromaDB for vectors; MCP for DuckDuckGo; provider-agnostic LLM (Nebius/Ollama).",
+    architecture: "FastAPI → LangGraph classify → retrieve or web search → generate. ChromaDB for vectors, MCP for DuckDuckGo, provider-agnostic LLM (Nebius or Ollama).",
     contributions: [
       "LangGraph stateful orchestration with conditional routing.",
       "MCP server for web search; provider-agnostic LLM layer for air-gap deployment.",
@@ -69,7 +72,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "medical-scheduling-system",
     name: "Medical Scheduling System",
-    oneLiner: "Full-stack healthcare scheduling with NumPy-based 2D sliding window algorithm for optimal appointment windows.",
+    oneLiner: "Full-stack healthcare scheduling with a NumPy-based 2D sliding-window algorithm for optimal appointment windows.",
     techTags: ["Python", "FastAPI", "SQLAlchemy", "Angular", "JWT"],
     href: "https://github.com/sandeepkumar1709/medical-scheduling-system",
     contextProblem: "Healthcare providers need optimal appointment scheduling across multiple providers and care paths.",
@@ -102,7 +105,7 @@ export const projects: ProjectDetail[] = [
   {
     slug: "greboost",
     name: "GREBoost",
-    oneLiner: "E-learning platform with RESTful APIs and Angular frontend; deployed on Vercel with CI/CD.",
+    oneLiner: "E-learning platform with RESTful APIs and an Angular frontend; deployed on Vercel with CI/CD.",
     techTags: ["Angular", "TypeScript", "Flask", "MongoDB", "Vercel", "GitHub Actions"],
     href: "https://github.com/sandeepkumar1709/GREBoost",
     contextProblem: "Students need a structured e-learning platform for GRE preparation.",
@@ -129,7 +132,7 @@ export const projects: ProjectDetail[] = [
     oneLiner: "Web app that analyzes tweet sentiment using NLP; interactive UI for classifying text as positive, negative, or neutral.",
     techTags: ["Python", "NLP", "Flask", "HTML", "CSS"],
     href: "https://github.com/sandeepkumar1709/Tweet-Sentiment-Analyzer",
-    contextProblem: "Users need a simple tool to analyze sentiment of short text (e.g., tweets) for research or monitoring.",
+    contextProblem: "Users need a simple tool to analyze the sentiment of short text (e.g., tweets) for research or monitoring.",
     role: "Full-stack developer.",
     contributions: [
       "Built NLP pipeline for sentiment classification (positive/negative/neutral).",
@@ -148,7 +151,7 @@ export const projects: ProjectDetail[] = [
     contextProblem: "The public needs a fast way to report crimes and get emergency help; response time and coordination with police/ambulance/hospitals matter.",
     role: "Sole developer.",
     contributions: [
-      "Built crime report submission with photo upload and location sharing to nearest police station.",
+      "Built crime report submission with photo upload and location sharing to the nearest police station.",
       "Integrated ambulance request and hospital notification for victim health assistance.",
       "Implemented report status tracking and updates from authorities.",
     ],

@@ -62,7 +62,7 @@ export function Hero() {
             path from a business requirement to working software: data pipelines,
             automation tools, full-stack services and AI automations that take manual
             work off people&rsquo;s plates. Before that, knowledge-graph and search
-            infrastructure for Fortune 500 clients.
+            infrastructure for a Fortune 500 client.
           </p>
 
           <div className="flex flex-col gap-6 md:gap-4 items-center md:items-start">

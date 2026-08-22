@@ -15,7 +15,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Software AI Engineer",
     organization: "Acculevel",
-    period: "June 2026 – Present",
+    period: "Jun 2026 – Present",
     location: "Lafayette, IN",
     highlights: [
       /*
@@ -32,9 +32,9 @@ export const experience: ExperienceEntry[] = [
        * an evasion map for a site that is still live, and one half of the
        * origin-lockdown finding is deliberately still open.
        */
-      "Sole engineer on a review-attribution platform from requirements to production, replacing an untestable low-code workflow that decided salesperson commissions; FastAPI, React and Postgres on Azure across 200 Google Business Profiles. It closes the loop with no human in the path: appointment, QR code, customer scan, Google review, advisor credit.",
+      "Owned a review-attribution platform from requirements to production as its sole engineer, replacing an untestable low-code workflow that decided salesperson commissions. It runs across 200 Google Business Profiles with no manual step between a customer scanning the QR code and the advisor being credited.",
       "Replaced an inference from appointment time and listing with a direct identity match, by adding Google SSO to the existing QR flow so a review resolves to the advisor who earned it.",
-      "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools, read-only by construction because the API has no read-only scope, so no write call was ever implemented and executives pull profile and search performance without manual exports.",
+      "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools. It is read-only by construction: the API has no read-only scope, so no write call was ever implemented. Executives pull profile and search performance data without manual exports.",
       "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
       /*
        * The origin-lockdown / double-CDN bullet was removed 2026-08-21: he
@@ -43,8 +43,8 @@ export const experience: ExperienceEntry[] = [
        * needs plain language, not the dossier's vocabulary.
        */
       "Found that firewall rules I had deployed were not reaching traffic on the root domain even though the dashboard showed them live. Our host runs its own CDN behind ours, and stacking the two only works through a CNAME rather than A records, so after switching the records caching started working and the rules were finally in the path.",
-      "Showed the hosting ceiling was bot waste rather than growth: bandwidth was maxed out while only half the paid visit allowance was used, and roughly three quarters of visits were non-billable crawler traffic. We were already blocking much of it, but at our own server after we had paid for it, so I moved the same blocking out to the CDN edge where it stops before it costs anything.",
-      "Diagnosed a site-wide 504 outage: I had deployed firewall rules the day before, so I ruled my own change out first, then went through 2,694 log events and found the origin had run out of PHP workers because crawlers were hammering pages that cannot be cached. Blocked the scrapers and AI crawlers by source, and kept the search crawlers that bring in leads.",
+      "Showed the hosting ceiling was bot traffic rather than growth: roughly three quarters of visits were non-billable crawler traffic. We were already blocking much of it, but at our own server, after we had paid for it, so I moved the same blocking out to the CDN edge where it stops before it costs anything.",
+      "Diagnosed a site-wide 504 outage. I had deployed firewall rules the day before, so I ruled my own change out first, then went through 2,694 log events and found the origin was being exhausted by crawler traffic hitting pages the CDN cannot cache. Blocked the offending crawlers at the edge and kept the ones that bring in leads.",
     ],
     stack: "Python, FastAPI, React, PostgreSQL, Azure (App Service, Functions, Key Vault), Databricks, MCP, LLM vision",
   },
@@ -54,7 +54,7 @@ export const experience: ExperienceEntry[] = [
     period: "Mar 2026 – May 2026",
     location: "Largo, MD",
     highlights: [
-      "Built a middleware REST API layer (Java Spring Boot) that syncs data between the GovieRates accounting platform and Project Magnus (DCAA-compliant timesheet system), eliminating mismatches across client accounts.",
+      "Built a middleware REST API layer (Java Spring Boot) that syncs data between the GovieRates accounting platform and Project Magnus (a DCAA-compliant timesheet system), eliminating mismatches across client accounts.",
       "Built an end-to-end onboarding flow: SSO JWT entry from GovieRates, Stripe subscriptions with a 7-tier pricing model, and automated multi-tenant provisioning; onboarded 30+ existing clients and added $5,000/month in recurring revenue.",
       "Prototyped an agentic layer with LangGraph so users could ask questions in plain English across GovieRates and Project Magnus; it was still a prototype when the internship ended.",
     ],
@@ -67,7 +67,7 @@ export const experience: ExperienceEntry[] = [
     location: "College Park, MD",
     highlights: [
       "Built a full-stack AgriTech app predicting Brown Patch disease outbreaks, with ETL over 10GB+ of heterogeneous data (TesseractOCR, BeautifulSoup, NOAA APIs → S3).",
-      "Improved model accuracy by 17 percentage points through climate-based data segmentation and feature engineering; deployed serverless inference (Lambda, API Gateway).",
+      "Improved model accuracy by 17 percentage points by replacing manual feature selection with stepwise regression over climate-segmented data; deployed serverless inference (Lambda, API Gateway).",
       "Replaced manual trial-and-error feature selection with stepwise regression in Python, then checked the selected features, a four-hour humidity window and leaf wetness duration, with the plant scientist on our team.",
     ],
     stack: "Python, SQL, AWS (S3, Lambda, API Gateway, SageMaker, EC2), TensorFlow, Scikit-learn",
@@ -112,7 +112,7 @@ export const experience: ExperienceEntry[] = [
       "Reshaped graph serialization into a minimal response payload, cutting API payload 68% (465KB → 148KB).",
       "Implemented multi-tenant dynamic routing in NGINX with rewrite-module capture groups, removing a dedicated routing microservice from the request path.",
       "Integrated a PyTorch GNN link-prediction service (GCN/GraphSAGE) into the graph UI with confidence thresholds and confidence-based highlighting, so analysts could see how far to trust each predicted link.",
-      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences. Found that our graph visualization dependency had been abandoned upstream and escalated it as business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the key components.",
+      "Built RESTful APIs (Node.js, PostgreSQL) for user preferences. Found that our graph visualization dependency had been abandoned upstream and escalated it as a business risk; a senior engineer designed the abstraction layer that decoupled us from it, and I implemented it across the key components.",
       "Led a team of three to automate regression testing, eliminating 20 hours of manual QA effort per release.",
     ],
     stack:
@@ -123,7 +123,7 @@ export const experience: ExperienceEntry[] = [
     organization: "Smart Interviews",
     period: "Feb 2021 – May 2021",
     highlights: [
-      "Built interactive features for React-based SmartInterviews platform.",
+      "Built interactive features for the React-based Smart Interviews platform.",
       "Mentored 160 students in data structures and algorithms.",
     ],
   },

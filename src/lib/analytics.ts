@@ -13,6 +13,7 @@ import { track } from "@vercel/analytics"
 type Events = {
   resume_open: { placement: "navbar" | "navbar_mobile" | "hero" | "footer" }
   email_click: { placement: "hero" | "contact_card" | "contact_cta" | "chat_panel" | "footer" }
+  phone_click: { placement: "contact_card" }
   social_click: { network: "linkedin" | "github"; placement: "hero" | "contact_card" | "footer" }
   project_open: { slug: string }
   chat_open: Record<string, never>

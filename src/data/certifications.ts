@@ -33,7 +33,7 @@ export const certifications: Certification[] = [
     type: "certification",
     issued: "Nov 2025",
     credentialId: "77f05886-6881-487f-8875-5bb497b6e19b",
-    credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b/",
+    credentialUrl: "https://graphacademy.neo4j.com/c/77f05886-6881-487f-8875-5bb497b6e19b",
   },
   {
     name: "IBM watsonx Chatbot Challenge: Runner-up (95 teams)",
@@ -41,7 +41,7 @@ export const certifications: Certification[] = [
     type: "award",
     issued: "Oct 2023",
     skills: ["Chatbot Development"],
-    credentialUrl: "https://github.com/sandeepkumar1709/watsonX",
+    credentialUrl: "https://github.com/sandeepkumar1709/watsonX/blob/main/certificate.pdf",
   },
   {
     name: "Neural Networks and Deep Learning",
@@ -49,7 +49,7 @@ export const certifications: Certification[] = [
     type: "certification",
     issued: "Feb 2022",
     credentialId: "7AQNTFNSWYRV",
-    credentialUrl: "https://www.coursera.org/account/accomplishments/certificate/7AQNTFNSWYRV",
+    credentialUrl: "https://www.coursera.org/account/accomplishments/verify/7AQNTFNSWYRV",
   },
   {
     name: "Teaching Assistant",
@@ -78,7 +78,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: "HackWithInfy",
-    detail: "Top 100 (0.06%) among 167,000+ participants.",
+    detail: "Grand finalist, top 108 of 167,000+ registrations.",
     href: "https://drive.google.com/file/d/1UhveLciLayXD_lvvUPTM9ckJG-fDFMlu/view?usp=sharing",
   },
   {
