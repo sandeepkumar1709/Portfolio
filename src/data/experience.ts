@@ -58,7 +58,10 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Software Engineer - Intern",
     organization: "GovieRates",
-    period: "Mar 2026 – May 2026",
+    // Corrected to Apr 2026 on 2026-08-22: he confirmed April, and LinkedIn
+    // already said "Apr 2026 - May 2026 · 2 mos". The "Mar" here was the odd
+    // one out and would have read as a padded internship next to the profile.
+    period: "Apr 2026 – May 2026",
     location: "Largo, MD",
     highlights: [
       "Built a middleware REST API layer (Java Spring Boot) that syncs data between the GovieRates accounting platform and Project Magnus (a DCAA-compliant timesheet system), eliminating mismatches across client accounts.",
@@ -98,12 +101,20 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer",
     organization: "Infosys",
     /**
-     * May 2021, confirmed directly by Sandeep 2026-08-21. Documents in the
-     * archive lean "Aug 2021", but he states May and his undergrad also ended
-     * that month, so the overlap is real rather than a copy error. Tenure is
-     * ~2 yr 7 mo, which supports "close to three years" but not "3+".
+     * Aug 2021 - Dec 2023. FINAL, and this flipped twice, so read this before
+     * changing it again.
+     *
+     * The archive was right all along: 17 documents said Aug 2021, including
+     * the full title line "Specialist Programmer (Software Engineer) | Infosys
+     * | Hyderabad, India | Aug 2021 - Dec 2023". On 2026-08-21 he told me May,
+     * so it was changed to May on his word. On 2026-08-22 he corrected it back
+     * to Aug. Aug is now both his statement and the documentary record, so
+     * there is nothing left arguing for May.
+     *
+     * Tenure is ~2 yr 5 mo. That supports "two and a half years"; it does not
+     * support "close to three years" and it never supported "3+".
      */
-    period: "May 2021 – Dec 2023",
+    period: "Aug 2021 – Dec 2023",
     location: "Hyderabad, India",
     highlights: [
       /*
