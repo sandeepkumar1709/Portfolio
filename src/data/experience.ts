@@ -19,41 +19,50 @@ export const experience: ExperienceEntry[] = [
     location: "Lafayette, IN",
     highlights: [
       /*
-       * Seven bullets (was eight; the origin-lockdown bullet came out 2026-08-21
-       * because he could not tell what it meant). Deliberately dropped:
-       * the Search Console analysis tooling and the 672-test/cost bullet (both
-       * substantially agent-authored, and he does not want credit for them),
-       * plus the UI/UX-review-and-audit bullet and the edge-rule-design bullet
-       * on length. The avatar-vs-display-name matching story came off too: it
-       * reads bigger than it felt to him. Do not re-add any of these.
+       * Six bullets as of 2026-09-26 (was seven). Sandeep's own compression:
+       * the two RMS bullets merged into one because the RMS reads small next
+       * to the ERP work, and the three edge/security bullets merged into one.
+       * Two new bullets lead: the in-house CRM and the medallion data
+       * platform. Both are stated in the RESUME'S wording at his explicit
+       * direction (decision relayed 2026-09-26 after he saw the repo-level
+       * evidence the master resume session raised: shared authorship on the
+       * CRM and warehouse, $500K and $50K as his estimates). He chose to keep
+       * "Built", "Solely re-architected", $500K, $50K and "63% to 99%" on the
+       * resume, and the portfolio mirrors the resume so the two never
+       * disagree side by side. Do not soften these to "co-built" / "team",
+       * and do not restate them more strongly either. Source of truth is
+       * ../../MyResume/FTE/overleaf.latex and RESUME_TODO.md sections J-K.
        *
-       * The edge/security bullets are written at the level of reasoning only:
-       * no origin addresses, no rule contents, no thresholds. Those would be
-       * an evasion map for a site that is still live, and one half of the
-       * origin-lockdown finding is deliberately still open.
+       * Still deliberately absent: "$1M" (includes revenue, not retired
+       * spend), "replaced Databricks" (the photo pipeline below still runs on
+       * it), "module of the ERP" (RMS is integrated with it: the ERP calls
+       * RMS to mint a review QR per lead and job), the 672-test / $13-a-month
+       * figures, the Search Console analysis tooling, the avatar matching
+       * key, the UI/UX audit and the edge rule-set design bullets. Do not
+       * re-add any of these. Colleague names never appear here.
+       *
+       * The edge/security bullet is written at the level of reasoning only:
+       * no origin addresses, no rule contents, no thresholds.
        */
-      "Owned a review-attribution platform from requirements to production as its sole engineer, replacing an untestable low-code workflow that decided salesperson commissions. It runs across 200 Google Business Profiles with no manual step between a customer scanning the QR code and the advisor being credited.",
+      "Built the company's in-house CRM, replacing the Workiz field-service platform across sales, scheduling and job operations. Shipped in four months, and it retired roughly $500K a year in subscription spend.",
       /*
-       * The 63% -> 99% figure is deliberately absent. It appears only in the
-       * Aug-2026 resume with no antecedent anywhere else, and two nearby 63%
-       * figures in the archive are about key COVERAGE, not accuracy. Sandeep
-       * agreed 2026-08-22 to leave it off rather than publish a number whose
-       * measurement he cannot point to. The mechanism carries the bullet.
+       * "Cut Databricks to a few jobs", never "replaced Databricks": the
+       * photo pipeline two bullets down is one of the survivors, so the two
+       * bullets confirm each other. Power BI reporting moved into the ERP,
+       * not the CRM (his correction, 2026-09-26).
        */
-      "Replaced an inference from appointment time and listing with a direct identity match, by adding Google SSO to the existing QR flow so a review resolves to the advisor who earned it.",
-      "Built and shipped a Model Context Protocol (MCP) server exposing Google Business Profile and Search Console as queryable tools. It is read-only by construction: the API has no read-only scope, so no write call was ever implemented. Executives pull profile and search performance data without manual exports.",
-      "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos for relevance and privacy risk before posting to the stalest listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
+      "Solely re-architected the medallion data platform around the CRM and ERP so dashboards stay current: moved Power BI reporting into the ERP and cut Databricks down to a few remaining jobs, retiring about $50K a year in licensing.",
       /*
-       * The origin-lockdown / double-CDN bullet was removed 2026-08-21: he
-       * could not tell what it meant, which is fatal for a bullet he has to
-       * defend out loud. Do not re-add it in that form. If it ever returns it
-       * needs plain language, not the dossier's vocabulary.
+       * 63% -> 99% is COVERAGE (share of reviews attributed), never
+       * "accuracy". It was off the site until 2026-09-26; he chose to publish
+       * it on the resume after review, so it is mirrored here as written.
        */
-      "Found that firewall rules I had deployed were not reaching traffic on the root domain even though the dashboard showed them live. Our host runs its own CDN behind ours, and stacking the two only works through a CNAME rather than A records, so after switching the records caching started working and the rules were finally in the path.",
-      "Showed the hosting ceiling was bot traffic rather than growth: roughly three quarters of visits were non-billable crawler traffic. We were already blocking much of it, but at our own server, after we had paid for it, so I moved the same blocking out to the CDN edge where it stops before it costs anything.",
-      "Diagnosed a site-wide 504 outage. I had deployed firewall rules the day before, so I ruled my own change out first, then went through 2,694 log events and found the origin was being exhausted by crawler traffic hitting pages the CDN cannot cache. Blocked the offending crawlers at the edge and kept the ones that bring in leads.",
+      "Sole engineer on the review-attribution service that decides sales commissions, now integrated with the ERP. I built it on FastAPI, React and Postgres to replace a low-code workflow nobody could test, and added Google SSO to the existing QR flow so a review resolves directly to the advisor who earned it, lifting coverage from 63% to 99%.",
+      "Shipped two read-only Model Context Protocol (MCP) servers exposing Google Business Profile and Search Console as tools. Search Console runs on its read-only scope; the Business Profile API has none, so that server implements no write calls at all. The marketing team runs ranking and traffic-drop analysis directly in Claude instead of pulling exports by hand.",
+      "Cut 25 hours a week of manual publishing with a daily Databricks pipeline that screens job-site photos with Claude vision for relevance and privacy risk before posting to the nearest stale listing, behind a geographic pre-filter that drops unplaceable jobs before spending anything on vision calls.",
+      "Ran the CDN and firewall layer for the public site. Found that rules showing as live weren't reaching the root domain because our host runs its own CDN behind ours, and fixed it by moving the records to a CNAME. Later traced a site-wide 504 outage through 2,694 log events to crawler traffic exhausting the origin on pages the CDN can't cache: roughly three quarters of visits were non-billable bots, so I moved the blocking from our server out to the edge and kept the crawlers that bring in leads.",
     ],
-    stack: "Python, FastAPI, React, PostgreSQL, Azure (App Service, Functions, Key Vault), Databricks, MCP, LLM vision",
+    stack: "Python, FastAPI, Node.js (Fastify, Prisma), React, PostgreSQL, Azure (App Service, Container Apps, Functions, Key Vault), Databricks, MCP, Claude vision",
   },
   {
     role: "Software Engineer - Intern",
